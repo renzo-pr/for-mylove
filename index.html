@@ -1,40 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For You 💗</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>For You 💗</title>
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Georgia, serif;
-      background: #fff5f7;
-      color: #5c3d45;
-      text-align: center;
-      overflow: hidden;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .page {
-      width: 100%;
-      max-width: 430px;
-      padding: 30px;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #ffd6e2, #ffeef3, #fbc4d4);
+  color: #6b3d4b;
+  overflow-x: hidden;
+}
 
-    .heart {
-      font-size: 55px;
-      animation: float 2s infinite ease-in-out;
-    }
+.page {
+  min-height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 18px;
+  position: relative;
+}
 
-    h1 {
+.page.active {
+  display: flex;
+}
+
+.card {
+  width: 100%;
+  max-width: 390px;
+  background: rgba(255,255,255,0.78);
+  border: 1px solid rgba(255,255,255,0.9);
+  border-radius: 28px;
+  padding: 30px 23px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(150,70,100,0.15);
+  backdrop-filter: blur(8px);
+}
+
+h1 {
+  font-size: 30px;
+  margin: 12px 0 15px;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.small {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 25px;
+  margin-top: 18px;
+  background: #d9829a;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 8px 18px rgba(180,80,110,0.2);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* Floating hearts */
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 20px;
+  animation: rise 7s linear infinite;
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.heart:nth-child(1) {
+  left: 10%;
+  animation-delay: 1s;
+}
+
+.heart:nth-child(2) {
+  left: 30%;
+  animation-delay: 3s;
+}
+
+.heart:nth-child(3) {
+  left: 55%;
+  animation-delay: 0s;
+}
+
+.heart:nth-child(4) {
+  left: 80%;
+  animation-delay: 2s;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(25deg);
+  }
+}
+
+/* Envelope */
+
+.envelope {
+  width: 260px;
+  height: 170px;
+  margin: 25px auto;
+  position: relative;
+  cursor: pointer;
+  perspective: 700px;
+}
+
+.envelope-body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #e9a0b3;
+  border-radius: 8px;
+  box-shadow: 0 12px 25px rgba(150,70,100,0.2);
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 130px solid transparent;
+  border-right: 130px solid transparent;
+  border-top: 95px solid #d9829a;
+  transform-origin: top;
+  transition: transform 0.8s ease;
+  z-index: 3;
+}
+
+.letter {
+  position: absolute;
+  width: 220px;
+  height: 135px;
+  background: white;
+  left: 20px;
+  top: 15px;
+  border-radius: 5px;
+  transition: transform 0.8s ease;
+  z-index: 2;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+  transform: translateY(-80px);
+}
+
+/* Letter */
+
+.letter-card {
+  text-align: left;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.letter-card h2 {
+  text-align: center;
+}
+
+.signature {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 25px;
+}
+
+/* Sparkles */
+
+.sparkle {
+  font-size: 22px;
+  letter-spacing: 12px;
+}
+
+.final-heart {
+  font-size: 75px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%,100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating decorations -->
+<div class="heart">♡</div>
+<div class="heart">♥</div>
+<div class="heart">♡</div>
+<div class="heart">♥</div>
+
+
+<!-- PAGE 1 -->
+
+<section class="page active" id="page1">
+  <div class="card">
+
+    <div class="sparkle">✦ ♡ ✦</div>
+
+    <h1>Hey, Love 💗</h1>
+
+    <p>
+      I made a little something for you.
+    </p>
+
+    <p class="small">
+      Take your time and open it. 🤍
+    </p>
+
+    <button onclick="showPage(2)">
+      Open My Surprise 💌
+    </button>
+
+  </div>
+</section>
+
+
+<!-- PAGE 2 -->
+
+<section class="page" id="page2">
+  <div class="card">
+
+    <div class="sparkle">♡ ✦ ♡</div>
+
+    <h2>A Little Letter For You 💌</h2>
+
+    <p>
+      There's something I want you to read.
+    </p>
+
+    <div class="envelope" id="envelope" onclick="openEnvelope()">
+
+      <div class="letter"></div>
+
+      <div class="envelope-body"></div>
+
+      <div class="flap"></div>
+
+    </div>
+
+    <p class="small">
+      Tap the envelope 💗
+    </p>
+
+    <button id="letterButton" onclick="showPage(3)" style="display:none;">
+      Read My Letter 🤍
+    </button>
+
+  </div>
+</section>
+
+
+<!-- PAGE 3 -->
+
+<section class="page" id="page3">
+  <div class="card letter-card">
+
+    <div class="sparkle">✦ ♡ ✦</div>
+
+    <h2>My Letter To You 🤍</h2>
+
+    <p>
+      Hey love, I know we’ve had some misunderstandings lately, and I’m sorry for the moments when we ended up hurting each other. I don’t want our little arguments to make us forget how much we mean to each other.
+    </p>
+
+    <p>
+      I may not always say or do the right thing, but please know that I genuinely care about you and our relationship. I hope we can talk things through, understand each other better, and leave the bad feelings behind.
+    </p>
+
+    <p>
+      I still choose you, even on the days when things aren’t perfect. I love you, and I hope we can be okay again soon.
+    </p>
+
+    <p class="signature">
+      With love, always. 💗
+    </p>
+
+    <div style="text-align:center;">
+      <button onclick="showPage(4)">
+        Next ✨
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PAGE 4 -->
+
+<section class="page" id="page4">
+  <div class="card">
+
+    <div class="sparkle">✦ ✦ ✦</div>
+
+    <h1>One More Thing 🌷</h1>
+
+    <p>
+      I don't expect everything to be perfect.
+    </p>
+
+    <p>
+      I just hope that we can keep choosing to understand each other, talk things through, and appreciate the little moments we share.
+    </p>
+
+    <p>
+      You are important to me. 🤍
+    </p>
+
+    <button onclick="showPage(5)">
+      One Last Surprise 💗
+    </button>
+
+  </div>
+</section>
+
+
+<!-- PAGE 5 -->
+
+<section class="page" id="page5">
+  <div class="card">
+
+    <div class="final-heart">💗</div>
+
+    <h1>Thank You</h1>
+
+    <p>
+      Thank you for being you.
+    </p>
+
+    <p>
+      I hope this little surprise made you smile. 🌷
+    </p>
+
+    <p>
+      Whatever happens, I hope we always remember the good moments and the reasons we care about each other.
+    </p>
+
+    <div class="sparkle">♡ ✦ ♡</div>
+
+    <p>
+      <strong>I'm glad I made this for you. 🤍</strong>
+    </p>
+
+  </div>
+</section>
+
+
+<script>
+
+function showPage(number) {
+
+  document.querySelectorAll(".page").forEach(function(page) {
+    page.classList.remove("active");
+  });
+
+  document.getElementById("page" + number).classList.add("active");
+
+  window.scrollTo(0, 0);
+}
+
+
+function openEnvelope() {
+
+  const envelope = document.getElementById("envelope");
+
+  envelope.classList.add("open");
+
+  setTimeout(function() {
+    document.getElementById("letterButton").style.display = "inline-block";
+  }, 900);
+
+}
+
+</script>
+
+</body>
+    </html>    h1 {
       font-size: 32px;
       margin: 15px 0;
     }
