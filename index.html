@@ -365,18 +365,7 @@ button:active {
   </div>
 
 
-  <div class="balloon-group">
-
-    <div class="balloon">❤️</div>
-    <div class="balloon">❤️</div>
-    <div class="balloon">❤️</div>
-    <div class="balloon">❤️</div>
-    <div class="balloon">❤️</div>
-    <div class="balloon">❤️</div>
-    <div class="balloon">❤️</div>
-
-  </div>
-
+<div class="balloon-group" id="balloonGroup"></div>
 </section>
 
 
@@ -447,7 +436,21 @@ button:active {
 
 
 <script>
+const balloonGroup = document.getElementById("balloonGroup");
 
+for (let i = 0; i < 100; i++) {
+  const balloon = document.createElement("div");
+
+  balloon.className = "balloon";
+  balloon.textContent = "❤️";
+
+  balloon.style.left = Math.random() * 95 + "%";
+  balloon.style.bottom = Math.random() * 80 - 20 + "px";
+  balloon.style.fontSize = (25 + Math.random() * 40) + "px";
+  balloon.style.animationDelay = Math.random() * 1.5 + "s";
+
+  balloonGroup.appendChild(balloon);
+  }
 function showPage(id) {
 
   document.querySelectorAll(".page").forEach(function(page) {
