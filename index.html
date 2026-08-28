@@ -4,146 +4,158 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Hey Baby</title>
+<title>For My Baby</title>
 
 <style>
+
+/* =========================================
+   RESET
+========================================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
-    min-height: 100vh;
-    background: #ffd5e5;
+    background: #ffd8e8;
+    color: #63364a;
     font-family: "Courier New", monospace;
-    color: #663448;
     overflow-x: hidden;
 }
 
-/* ==============================
-   PAGE
-============================== */
+
+/* =========================================
+   PAGE SYSTEM
+========================================= */
 
 .page {
     display: none;
-    min-height: 100vh;
+
     width: 100%;
+    min-height: 100vh;
 
     align-items: center;
     justify-content: center;
 
-    padding: 20px;
+    padding: 18px;
 }
 
 .page.active {
     display: flex;
 }
 
-/* ==============================
+
+/* =========================================
    MAIN CARD
-============================== */
+========================================= */
 
 .card {
     position: relative;
 
     width: 100%;
-    max-width: 900px;
-    min-height: 620px;
+    max-width: 920px;
+    min-height: 650px;
 
-    background: #fff;
+    background: #ffffff;
 
-    border: 7px solid white;
-    outline: 4px solid #ec82ad;
+    border: 7px solid #ffffff;
+    outline: 4px solid #ed83ae;
 
     box-shadow:
-        9px 9px 0 #cf5b8d,
-        14px 14px 0 #f3a3bf;
+        9px 9px 0 #ce5b8c,
+        14px 14px 0 #f1a5c1;
 
     overflow: hidden;
 }
 
-/* inner border */
+
+/* Inner white/pink border */
 
 .card::before {
     content: "";
 
     position: absolute;
 
-    top: 13px;
-    left: 13px;
-    right: 13px;
-    bottom: 13px;
+    top: 14px;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
 
-    border: 3px dashed #f2a5c1;
+    border: 3px dashed #f2a8c3;
 
     pointer-events: none;
 
-    z-index: 1;
+    z-index: 2;
 }
 
-/* ==============================
+
+/* =========================================
    CONTENT
-============================== */
+========================================= */
 
 .content {
     position: relative;
-    z-index: 20;
+    z-index: 50;
 
-    min-height: 620px;
+    width: 100%;
+    min-height: 650px;
 
-    padding: 70px 160px;
+    padding: 75px 170px 85px;
 
     display: flex;
     flex-direction: column;
 
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     text-align: center;
 }
 
 .small-title {
-    color: #d65d91;
+    color: #d76193;
 
     font-size: 12px;
     letter-spacing: 4px;
 
-    margin-bottom: 14px;
+    margin-bottom: 16px;
 }
 
 h1 {
-    color: #e85694;
+    color: #e75d99;
 
-    font-size: clamp(42px, 8vw, 72px);
+    font-size: clamp(42px, 8vw, 74px);
 
     line-height: 1;
 
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 
     text-shadow:
-        4px 4px 0 #ffd0df;
+        4px 4px 0 #ffd2e1;
 }
 
 h2 {
-    color: #e85694;
+    color: #e75d99;
 
-    font-size: clamp(28px, 6vw, 46px);
+    font-size: clamp(28px, 6vw, 48px);
 
-    line-height: 1.1;
+    line-height: 1.05;
 
-    margin-bottom: 22px;
+    margin-bottom: 24px;
 
     text-shadow:
-        3px 3px 0 #ffd0df;
+        3px 3px 0 #ffd2e1;
 }
 
 .message {
-    max-width: 590px;
+    max-width: 600px;
 
     font-size: 14px;
     line-height: 1.85;
@@ -151,27 +163,31 @@ h2 {
     margin-bottom: 25px;
 }
 
-/* ==============================
+.message strong {
+    color: #dc5c91;
+}
+
+
+/* =========================================
    BUTTONS
-============================== */
+========================================= */
 
 button {
     position: relative;
-    z-index: 100;
+    z-index: 200;
 
-    display: inline-block;
-
-    min-width: 130px;
+    min-width: 135px;
 
     padding: 13px 22px;
+
     margin: 5px;
 
-    background: #ed7eaa;
+    background: #ec7faa;
 
     color: white;
 
     border: 4px solid white;
-    outline: 3px solid #cf5b8d;
+    outline: 3px solid #cc588a;
 
     font-family: "Courier New", monospace;
     font-size: 12px;
@@ -179,61 +195,60 @@ button {
 
     cursor: pointer;
 
-    box-shadow: 5px 5px 0 #c34f82;
+    box-shadow: 5px 5px 0 #bf4d7e;
 
     transition:
-        transform .12s,
-        box-shadow .12s;
+        transform .12s ease,
+        box-shadow .12s ease;
 
     touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 button:hover {
     transform: translate(2px, 2px);
-
-    box-shadow: 3px 3px 0 #c34f82;
+    box-shadow: 3px 3px 0 #bf4d7e;
 }
 
 button:active {
     transform: translate(5px, 5px);
-
-    box-shadow: 0 0 0 #c34f82;
+    box-shadow: 0 0 0 #bf4d7e;
 }
 
-/* ==============================
+
+/* =========================================
    EMOTION BUTTONS
-============================== */
+========================================= */
 
 .emotions {
     width: 100%;
-    max-width: 500px;
+    max-width: 520px;
 
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
 
     gap: 18px;
 }
 
 .emotion {
-    min-height: 68px;
-
-    font-size: 12px;
+    min-height: 70px;
 }
 
-/* ==============================
+
+/* =========================================
    PIXEL CHARACTER
-============================== */
+========================================= */
 
 .character {
     position: absolute;
 
-    width: 125px;
-    height: 185px;
+    width: 130px;
+    height: 205px;
 
-    bottom: 25px;
+    bottom: 23px;
 
-    z-index: 30;
+    z-index: 35;
 
     pointer-events: none;
 
@@ -241,37 +256,39 @@ button:active {
 }
 
 .character.left {
-    left: 20px;
+    left: 18px;
 }
 
 .character.right {
-    right: 20px;
+    right: 18px;
 }
 
-/* ==============================
+
+/* =========================================
    HAIR BACK
-============================== */
+========================================= */
 
 .char-hair-back {
     position: absolute;
 
-    width: 88px;
-    height: 90px;
+    width: 90px;
+    height: 88px;
 
-    top: 10px;
-    left: 18px;
+    left: 19px;
+    top: 13px;
 
-    background: #e58fc1;
+    background: #e78fc0;
 
-    border: 5px solid #5d3043;
+    border: 6px solid #573146;
 
-    border-radius: 45% 45% 20% 20%;
+    border-radius: 0;
 
     box-shadow:
-        5px 5px 0 #c970a6;
+        6px 6px 0 #bd6697;
 }
 
-/* side hair */
+
+/* Side hair */
 
 .char-hair-back::before,
 .char-hair-back::after {
@@ -279,14 +296,14 @@ button:active {
 
     position: absolute;
 
-    width: 20px;
+    width: 19px;
     height: 55px;
 
-    background: #e58fc1;
+    top: 38px;
 
-    border: 5px solid #5d3043;
+    background: #e78fc0;
 
-    top: 45px;
+    border: 5px solid #573146;
 }
 
 .char-hair-back::before {
@@ -297,48 +314,50 @@ button:active {
     right: -13px;
 }
 
-/* ==============================
+
+/* =========================================
    FACE
-============================== */
+========================================= */
 
 .char-face {
     position: absolute;
 
-    width: 78px;
-    height: 82px;
+    width: 80px;
+    height: 76px;
 
-    left: 23px;
-    top: 35px;
+    left: 24px;
+    top: 39px;
 
-    background: #ffd9c6;
+    background: #ffd9c7;
 
-    border: 5px solid #5d3043;
+    border: 5px solid #573146;
 
-    border-radius: 48% 48% 42% 42%;
+    border-radius: 0;
 
-    z-index: 3;
+    z-index: 5;
 }
 
-/* ==============================
-   BANGS
-============================== */
+
+/* =========================================
+   PIXEL BANGS
+========================================= */
 
 .char-bangs {
     position: absolute;
 
     width: 82px;
-    height: 45px;
+    height: 38px;
 
-    left: 21px;
-    top: 28px;
+    left: 23px;
+    top: 29px;
 
-    background: #e58fc1;
+    background: #e78fc0;
 
-    border: 5px solid #5d3043;
+    border: 5px solid #573146;
 
-    border-radius: 45% 45% 15% 15%;
+    border-radius: 0;
 
-    z-index: 5;
+    z-index: 10;
 }
 
 .char-bangs::after {
@@ -346,144 +365,146 @@ button:active {
 
     position: absolute;
 
-    width: 35px;
-    height: 28px;
+    width: 22px;
+    height: 24px;
 
-    background: #e58fc1;
+    left: 25px;
+    bottom: -20px;
 
-    border-left: 5px solid #5d3043;
-    border-bottom: 5px solid #5d3043;
+    background: #e78fc0;
 
-    bottom: -18px;
-    left: 20px;
-
-    transform: rotate(-10deg);
+    border-left: 5px solid #573146;
+    border-bottom: 5px solid #573146;
 }
 
-/* ==============================
-   BIG PIXEL EYES
-============================== */
+
+/* =========================================
+   HUGE PIXEL EYES
+========================================= */
 
 .big-eye {
     position: absolute;
 
-    width: 25px;
-    height: 31px;
+    width: 27px;
+    height: 32px;
+
+    top: 29px;
 
     background: white;
 
-    border: 4px solid #5d3043;
+    border: 4px solid #573146;
 
-    border-radius: 50%;
+    border-radius: 0;
 
-    top: 39px;
-
-    z-index: 8;
+    z-index: 20;
 }
 
 .big-eye.left-eye {
-    left: 9px;
+    left: 8px;
 }
 
 .big-eye.right-eye {
-    right: 9px;
+    right: 8px;
 }
 
-/* pupils */
+
+/* Pupils */
 
 .big-eye::after {
     content: "";
 
     position: absolute;
 
-    width: 12px;
-    height: 17px;
+    width: 14px;
+    height: 20px;
 
-    background: #5d3043;
-
-    border-radius: 50%;
-
-    top: 6px;
     left: 4px;
+    top: 6px;
+
+    background: #573146;
+
+    border-radius: 0;
 }
 
-/* eye shine */
+
+/* Pixel eye shine */
 
 .big-eye::before {
     content: "";
 
     position: absolute;
 
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
+
+    left: 6px;
+    top: 6px;
 
     background: white;
 
-    border-radius: 50%;
-
-    top: 7px;
-    left: 8px;
-
-    z-index: 3;
+    z-index: 30;
 }
 
-/* ==============================
+
+/* =========================================
    BLUSH
-============================== */
+========================================= */
 
 .blush {
+    position: absolute;
+
+    width: 14px;
+    height: 6px;
+
+    top: 59px;
+
+    background: #f29db6;
+
+    z-index: 25;
+}
+
+.left-blush {
+    left: 5px;
+}
+
+.right-blush {
+    right: 5px;
+}
+
+
+/* =========================================
+   MOUTH
+========================================= */
+
+.char-mouth {
     position: absolute;
 
     width: 13px;
     height: 6px;
 
-    background: #f3a1b7;
-
-    top: 67px;
-
-    z-index: 9;
-}
-
-.blush.left-blush {
-    left: 7px;
-}
-
-.blush.right-blush {
-    right: 7px;
-}
-
-/* ==============================
-   MOUTH
-============================== */
-
-.char-mouth {
-    position: absolute;
-
-    width: 12px;
-    height: 7px;
-
-    border-bottom: 4px solid #5d3043;
-
     left: 29px;
-    top: 72px;
+    top: 62px;
 
-    z-index: 10;
+    border-bottom: 4px solid #573146;
+
+    z-index: 30;
 }
 
-/* ==============================
-   BOW
-============================== */
+
+/* =========================================
+   PIXEL BOW
+========================================= */
 
 .bow {
     position: absolute;
 
-    width: 30px;
-    height: 22px;
+    width: 37px;
+    height: 30px;
 
     top: 3px;
-    right: 9px;
+    right: 3px;
 
-    z-index: 15;
+    z-index: 40;
 }
 
 .bow::before,
@@ -492,139 +513,148 @@ button:active {
 
     position: absolute;
 
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
 
-    background: #f47eae;
+    background: #f27eae;
 
-    border: 4px solid #5d3043;
+    border: 4px solid #573146;
 }
 
 .bow::before {
     left: 0;
-    transform: rotate(25deg);
+    top: 5px;
 }
 
 .bow::after {
     right: 0;
-    transform: rotate(-25deg);
+    top: 5px;
 }
 
 .bow-center {
     position: absolute;
 
-    width: 9px;
-    height: 9px;
+    width: 10px;
+    height: 10px;
 
-    background: #ffd36f;
+    left: 13px;
+    top: 9px;
 
-    border: 3px solid #5d3043;
+    background: #ffd46e;
 
-    left: 10px;
-    top: 7px;
+    border: 3px solid #573146;
 
-    z-index: 2;
+    z-index: 5;
 }
 
-/* ==============================
-   BODY
-============================== */
+
+/* =========================================
+   BODY / DRESS
+========================================= */
 
 .char-body {
     position: absolute;
 
-    width: 74px;
-    height: 63px;
+    width: 73px;
+    height: 61px;
 
-    left: 25px;
-    bottom: 17px;
+    left: 27px;
+    bottom: 22px;
 
     background: #f47eae;
 
-    border: 5px solid #5d3043;
+    border: 5px solid #573146;
 
-    border-radius: 18px 18px 8px 8px;
+    border-radius: 0;
 
-    z-index: 4;
+    z-index: 10;
 }
 
-/* dress belt */
+
+/* Belt */
 
 .char-body::before {
     content: "";
 
     position: absolute;
 
-    width: 64px;
+    width: 63px;
     height: 8px;
 
     left: 0;
-    top: 18px;
+    top: 17px;
 
-    background: #ffbad2;
+    background: #ffb9d1;
 }
 
-/* tiny heart on dress */
+
+/* Dress heart */
 
 .char-body::after {
     content: "♥";
 
     position: absolute;
 
-    color: #fff;
+    color: white;
 
-    font-size: 17px;
+    font-size: 15px;
 
     left: 25px;
-    top: 28px;
+    top: 29px;
 }
 
-/* ==============================
+
+/* =========================================
    ARMS
-============================== */
+========================================= */
 
 .char-arm {
     position: absolute;
 
-    width: 19px;
-    height: 42px;
+    width: 18px;
+    height: 40px;
 
-    background: #ffd9c6;
+    background: #ffd9c7;
 
-    border: 4px solid #5d3043;
+    border: 4px solid #573146;
 
-    z-index: 2;
+    border-radius: 0;
+
+    z-index: 5;
 }
 
 .char-arm.left-arm {
     left: 10px;
-    bottom: 22px;
+    bottom: 23px;
 
-    transform: rotate(25deg);
+    transform: rotate(24deg);
 }
 
 .char-arm.right-arm {
-    right: 8px;
-    bottom: 22px;
+    right: 9px;
+    bottom: 23px;
 
-    transform: rotate(-25deg);
+    transform: rotate(-24deg);
 }
 
-/* ==============================
+
+/* =========================================
    SHOES
-============================== */
+========================================= */
 
 .shoe {
     position: absolute;
 
-    width: 27px;
-    height: 14px;
+    width: 28px;
+    height: 15px;
 
-    background: #5d3043;
+    background: #573146;
 
-    bottom: 5px;
+    border-radius: 0;
 
-    z-index: 5;
+    bottom: 7px;
+
+    z-index: 25;
 }
 
 .shoe.left-shoe {
@@ -635,20 +665,21 @@ button:active {
     right: 23px;
 }
 
-/* ==============================
+
+/* =========================================
    FLOATING HEARTS
-============================== */
+========================================= */
 
 .float-heart {
     position: absolute;
 
-    color: #ed78a9;
+    color: #e7659e;
 
-    font-size: 25px;
+    font-size: 28px;
 
-    z-index: 40;
+    z-index: 60;
 
-    animation: heartFloat 2s ease-in-out infinite;
+    animation: pixelFloat 1.8s steps(3) infinite;
 }
 
 .float-heart.one {
@@ -657,59 +688,61 @@ button:active {
 }
 
 .float-heart.two {
-    right: -7px;
+    right: -8px;
     top: 65px;
 
-    animation-delay: .6s;
+    animation-delay: .5s;
 }
 
-@keyframes heartFloat {
+@keyframes pixelFloat {
 
-    0%,100% {
+    0%,
+    100% {
         transform: translateY(0);
     }
 
     50% {
-        transform: translateY(-10px);
+        transform: translateY(-9px);
     }
 }
 
-/* ==============================
-   STARS
-============================== */
+
+/* =========================================
+   DECORATIVE STARS
+========================================= */
 
 .star {
     position: absolute;
 
-    color: #ed82ae;
+    color: #ec7eaa;
 
     font-size: 22px;
 
-    z-index: 4;
-
-    animation: sparkle 1.4s infinite alternate;
+    z-index: 5;
 
     pointer-events: none;
+
+    animation: sparkle 1.5s steps(2) infinite alternate;
 }
 
 .s1 {
-    top: 28px;
-    left: 42px;
+    top: 30px;
+    left: 45px;
 }
 
 .s2 {
-    top: 58px;
-    right: 45px;
+    top: 55px;
+    right: 48px;
 }
 
 .s3 {
     bottom: 50px;
-    left: 50px;
+    left: 48px;
 }
 
 .s4 {
     bottom: 65px;
-    right: 50px;
+    right: 48px;
 }
 
 @keyframes sparkle {
@@ -725,17 +758,19 @@ button:active {
     }
 }
 
-/* ==============================
+
+/* =========================================
    FINAL PAGE
-============================== */
+========================================= */
 
 .final-page {
     background: #fff0f6;
 }
 
-/* ==============================
+
+/* =========================================
    MOBILE
-============================== */
+========================================= */
 
 @media (max-width: 650px) {
 
@@ -751,25 +786,20 @@ button:active {
         min-height: 720px;
 
         padding:
-            85px 58px 105px;
+            82px 57px 105px;
     }
 
     .character {
-        transform: scale(.67);
+        transform: scale(.64);
         transform-origin: bottom center;
     }
 
     .character.left {
-        left: -9px;
+        left: -12px;
     }
 
     .character.right {
-        right: -9px;
-    }
-
-    .message {
-        font-size: 12px;
-        line-height: 1.8;
+        right: -12px;
     }
 
     .small-title {
@@ -785,6 +815,11 @@ button:active {
         font-size: 29px;
     }
 
+    .message {
+        font-size: 11px;
+        line-height: 1.8;
+    }
+
     .emotions {
         grid-template-columns: 1fr;
         gap: 13px;
@@ -796,25 +831,27 @@ button:active {
     }
 }
 
-/* ==============================
-   VERY SMALL PHONE
-============================== */
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
 
 @media (max-width: 380px) {
 
     .content {
-        padding-left: 42px;
-        padding-right: 42px;
+        padding-left: 40px;
+        padding-right: 40px;
     }
 
     .character {
-        transform: scale(.57);
+        transform: scale(.54);
     }
 
     .message {
-        font-size: 11px;
+        font-size: 10px;
     }
 }
+
 </style>
 </head>
 
@@ -823,7 +860,7 @@ button:active {
 
 
 <!-- =====================================================
-     PAGE 1
+PAGE 1 — OPENING
 ===================================================== -->
 
 <section class="page active" id="page1">
@@ -919,6 +956,7 @@ button:active {
     <h1>Hey Baby</h1>
 
     <p class="message">
+
         I made this little corner of the internet
         just for you.
 
@@ -932,6 +970,7 @@ button:active {
 
         So take a little breath,
         relax, and enjoy this little surprise.
+
     </p>
 
     <button type="button" onclick="showPage(2)">
@@ -946,7 +985,7 @@ button:active {
 
 
 <!-- =====================================================
-     PAGE 2
+PAGE 2 — CHOOSE EMOTION
 ===================================================== -->
 
 <section class="page" id="page2">
@@ -1079,7 +1118,7 @@ button:active {
 
 
 <!-- =====================================================
-     PAGE 3
+PAGE 3 — SAD
 ===================================================== -->
 
 <section class="page" id="page3">
@@ -1215,7 +1254,7 @@ button:active {
 
 
 <!-- =====================================================
-     PAGE 4
+PAGE 4 — MISS ME
 ===================================================== -->
 
 <section class="page" id="page4">
@@ -1271,42 +1310,4 @@ button:active {
         <div class="big-eye right-eye"></div>
 
         <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-
-        <div class="char-mouth"></div>
-
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-
-</div>
-
-
-<div class="content">
-
-    <div class="small-title">
-        OPEN THIS WHENEVER...
-    </div>
-
-    <h2>You Miss Me</h2>
-
-    <p class="message">
-
-        Hey baby,
-
-        <br><br>
-
-        If you came here because you miss me,
-        I hope this 
+        <div class="blush right-blush">
