@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For You ❤️</title>
 
 <style>
@@ -10,30 +11,33 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
-  font-family: Georgia, serif;
-  background: linear-gradient(135deg, #ffd0dc, #fff1f5, #ffc0cf);
-  color: #642536;
   overflow: hidden;
+  font-family: Georgia, "Times New Roman", serif;
+  color: #642536;
+  background:
+    radial-gradient(circle at 20% 20%, #ffe5ed 0 5%, transparent 6%),
+    radial-gradient(circle at 80% 30%, #ffe1e9 0 4%, transparent 5%),
+    linear-gradient(135deg, #ffd0dc, #fff0f5, #ffc2d0);
 }
 
 /* =========================
-   PAGES
+   PAGE SYSTEM
 ========================= */
 
 .page {
   display: none;
   width: 100%;
   height: 100vh;
-  justify-content: center;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   padding: 20px;
 }
 
@@ -42,19 +46,27 @@ body {
 }
 
 /* =========================
-   FIRST PAGE
+   FIRST / FINAL CARD
 ========================= */
 
 .card {
   width: 100%;
   max-width: 390px;
   padding: 35px 25px;
-  background: rgba(255,255,255,.88);
+  text-align: center;
+
+  background: rgba(255,255,255,0.90);
+
+  border: 1px solid rgba(255,255,255,0.9);
+
   border-radius: 30px;
-  box-shadow: 0 15px 40px rgba(100,30,50,.18);
+
+  box-shadow:
+    0 15px 40px rgba(100,30,50,0.18);
 }
 
 .card h1 {
+  margin: 15px 0;
   color: #b51f42;
   font-size: 31px;
 }
@@ -67,28 +79,63 @@ body {
 button {
   border: none;
   border-radius: 30px;
+
   padding: 14px 25px;
   margin-top: 15px;
+
   background: #c92749;
   color: white;
+
   font-size: 16px;
-  box-shadow: 0 8px 20px rgba(150,20,50,.22);
+
+  box-shadow:
+    0 8px 20px rgba(150,20,50,0.22);
+
+  cursor: pointer;
 }
 
 button:active {
-  transform: scale(.95);
+  transform: scale(0.95);
 }
 
 /* =========================
-   SMALL DECORATIVE HEARTS
+   DECORATIVE HEARTS
 ========================= */
 
 .decor {
   position: fixed;
+  z-index: 1;
+
   font-size: 25px;
-  opacity: .7;
-  animation: float 4s ease-in-out infinite;
+  opacity: 0.65;
+
   pointer-events: none;
+
+  animation:
+    decorativeFloat 4s ease-in-out infinite;
 }
 
-.d1
+.d1 {
+  left: 7%;
+  top: 15%;
+}
+
+.d2 {
+  right: 8%;
+  top: 20%;
+  animation-delay: 1s;
+}
+
+.d3 {
+  left: 10%;
+  bottom: 15%;
+  animation-delay: 2s;
+}
+
+.d4 {
+  right: 10%;
+  bottom: 13%;
+  animation-delay: 3s;
+}
+
+@keyframes decorativeFloat
