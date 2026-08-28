@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For You ❤️</title>
 
 <style>
@@ -10,22 +11,26 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
-  min-height: 100vh;
-  overflow: hidden;
-  font-family: Georgia, serif;
-  background: linear-gradient(135deg, #ffd1dc, #fff0f5, #ffc0cb);
-  color: #682536;
+  width: 100%;
+  min-height: 100%;
 }
 
-/* PAGES */
+body {
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #ffd1dc, #fff0f5, #ffc1d0);
+  color: #632635;
+  overflow: hidden;
+}
+
+/* PAGE */
 .page {
   display: none;
-  min-height: 100vh;
   width: 100%;
-  align-items: center;
+  min-height: 100vh;
   justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 20px;
 }
@@ -34,21 +39,19 @@ body {
   display: flex;
 }
 
+/* CARD */
 .card {
   width: 100%;
   max-width: 390px;
-  padding: 30px 22px;
-  background: rgba(255,255,255,.78);
-  border-radius: 30px;
-  box-shadow: 0 15px 40px rgba(120,30,60,.18);
+  padding: 35px 25px;
+  background: rgba(255,255,255,0.86);
+  border-radius: 28px;
+  box-shadow: 0 15px 40px rgba(100,30,50,0.18);
 }
 
 h1 {
+  color: #b51f42;
   font-size: 31px;
-}
-
-h2 {
-  color: #a51f3d;
 }
 
 p {
@@ -60,47 +63,423 @@ button {
   border: none;
   border-radius: 30px;
   padding: 14px 25px;
+  margin-top: 15px;
   background: #c92749;
   color: white;
   font-size: 16px;
-  margin-top: 15px;
+  box-shadow: 0 8px 20px rgba(150,20,50,0.22);
 }
 
-/* FLOATING HEARTS */
-.decor-heart {
+button:active {
+  transform: scale(0.95);
+}
+
+/* HEART DECORATIONS */
+.heart {
   position: fixed;
-  font-size: 28px;
-  animation: float 5s infinite ease-in-out;
+  font-size: 25px;
+  opacity: .7;
+  animation: floatHeart 4s ease-in-out infinite;
   pointer-events: none;
 }
 
-.h1 { left: 8%; top: 15%; }
-.h2 { right: 8%; top: 20%; animation-delay: 1s; }
-.h3 { left: 12%; bottom: 15%; animation-delay: 2s; }
-.h4 { right: 12%; bottom: 18%; animation-delay: 3s; }
-.h5 { left: 25%; top: 8%; animation-delay: .5s; }
-.h6 { right: 25%; bottom: 8%; animation-delay: 1.5s; }
+.heart1 {
+  left: 7%;
+  top: 15%;
+}
 
-@keyframes float {
+.heart2 {
+  right: 8%;
+  top: 20%;
+  animation-delay: 1s;
+}
+
+.heart3 {
+  left: 10%;
+  bottom: 15%;
+  animation-delay: 2s;
+}
+
+.heart4 {
+  right: 10%;
+  bottom: 13%;
+  animation-delay: 3s;
+}
+
+@keyframes floatHeart {
   0%,100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-15px);
   }
 }
 
 /* BALLOON PAGE */
-.balloon-area {
+#balloonPage {
   position: relative;
-  width: 100%;
-  height: 100vh;
   overflow: hidden;
+  align-items: flex-end;
+  padding-bottom: 0;
 }
 
-.main-balloon {
+/* PAPER */
+.paper {
+  position: absolute;
+  width: 82%;
+  max-width: 350px;
+  min-height: 280px;
+  left: 50%;
+  bottom: -330px;
+  transform: translateX(-50%);
+  background: #fffdf7;
+  padding: 25px 22px;
+  border-radius: 5px;
+  box-shadow: 0 10px 30px rgba(80,30,40,.2);
+  z-index: 2;
+  text-align: left;
+}
+
+.paper-title {
+  text-align: center;
+  color: #a51f3d;
+  font-size: 23px;
+  margin-bottom: 15px;
+}
+
+.paper p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.balloon-group {
   position: absolute;
   left: 50%;
-  top: 190px;
+  bottom: -180px;
   transform: translateX(-50%);
-  z-index: 5;
+  width: 100%;
+  height: 650px;
+  z-index: 4;
+}
+
+/* HEART BALLOONS */
+.balloon {
+  position: absolute;
+  font-size: 58px;
+  bottom: 0;
+  animation: balloonRise 4s ease-in forwards;
+  filter: drop-shadow(0 8px 7px rgba(100,0,30,.2));
+}
+
+.balloon:nth-child(1) {
+  left: 5%;
+  animation-delay: .1s;
+}
+
+.balloon:nth-child(2) {
+  left: 18%;
+  animation-delay: .15s;
+  font-size: 48px;
+}
+
+.balloon:nth-child(3) {
+  left: 32%;
+  animation-delay: .05s;
+  font-size: 55px;
+}
+
+.balloon:nth-child(4) {
+  left: 47%;
+  animation-delay: .1s;
+  font-size: 65px;
+}
+
+.balloon:nth-child(5) {
+  left: 62%;
+  animation-delay: .2s;
+  font-size: 52px;
+}
+
+.balloon:nth-child(6) {
+  left: 77%;
+  animation-delay: .1s;
+  font-size: 60px;
+}
+
+.balloon:nth-child(7) {
+  left: 88%;
+  animation-delay: .25s;
+  font-size: 45px;
+}
+
+/* STRINGS */
+.string {
+  position: absolute;
+  width: 1px;
+  height: 280px;
+  background: #8b6068;
+  left: 50%;
+  top: 55px;
+}
+
+/* ANIMATION */
+.start-animation .balloon-group {
+  animation: groupRise 4s ease-in forwards;
+}
+
+.start-animation .paper {
+  animation: paperRise 4s ease-in forwards;
+}
+
+@keyframes groupRise {
+  0% {
+    bottom: -180px;
+  }
+
+  100% {
+    bottom: 125vh;
+  }
+}
+
+@keyframes balloonRise {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes paperRise {
+  0% {
+    bottom: -330px;
+  }
+
+  100% {
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+  }
+}
+
+/* LETTER PAGE */
+#letterPage {
+  overflow-y: auto;
+  align-items: flex-start;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.letter {
+  width: 100%;
+  max-width: 390px;
+  background: #fffdf8;
+  padding: 27px 23px;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(100,30,50,.2);
+  text-align: left;
+}
+
+.letter h2 {
+  text-align: center;
+  color: #a51f3d;
+}
+
+.letter p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.signature {
+  text-align: center;
+  margin-top: 25px;
+}
+
+/* FINAL */
+.final-heart {
+  font-size: 80px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%,100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- DECORATIVE HEARTS -->
+<div class="heart heart1">❤️</div>
+<div class="heart heart2">❤️</div>
+<div class="heart heart3">♥️</div>
+<div class="heart heart4">❤️</div>
+
+
+<!-- PAGE 1 -->
+<section class="page active" id="homePage">
+
+  <div class="card">
+
+    <div style="font-size:35px;">♡ ✦ ♡</div>
+
+    <h1>Hey, Love ❤️</h1>
+
+    <p>
+      I made a little surprise just for you.
+    </p>
+
+    <p>
+      There's something waiting for you... 🎈
+    </p>
+
+    <button onclick="startSurprise()">
+      Open My Surprise 💌
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE 2 -->
+<section class="page" id="balloonPage">
+
+  <div class="paper">
+
+    <div class="paper-title">
+      A Little Letter For You ❤️
+    </div>
+
+    <p>
+      Your letter is waiting...
+    </p>
+
+  </div>
+
+
+  <div class="balloon-group">
+
+    <div class="balloon">❤️</div>
+    <div class="balloon">❤️</div>
+    <div class="balloon">❤️</div>
+    <div class="balloon">❤️</div>
+    <div class="balloon">❤️</div>
+    <div class="balloon">❤️</div>
+    <div class="balloon">❤️</div>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE 3 -->
+<section class="page" id="letterPage">
+
+  <div class="letter">
+
+    <h2>A Letter For You 🤍</h2>
+
+    <p>
+      Hey love, I know we’ve had some misunderstandings lately, and I’m sorry for the moments when we ended up hurting each other. I don’t want our little arguments to make us forget how much we mean to each other.
+    </p>
+
+    <p>
+      I may not always say or do the right thing, but please know that I genuinely care about you and our relationship. I hope we can talk things through, understand each other better, and leave the bad feelings behind.
+    </p>
+
+    <p>
+      I still choose you, even on the days when things aren’t perfect. I love you, and I hope we can be okay again soon.
+    </p>
+
+    <p class="signature">
+      With love, always. ❤️
+    </p>
+
+    <div style="text-align:center;">
+      <button onclick="showPage('finalPage')">
+        One Last Thing ✨
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE 4 -->
+<section class="page" id="finalPage">
+
+  <div class="card">
+
+    <div class="final-heart">
+      ❤️
+    </div>
+
+    <h1>Thank You 🤍</h1>
+
+    <p>
+      I hope this little surprise made you smile.
+    </p>
+
+    <p>
+      Thank you for taking the time to read my letter.
+    </p>
+
+    <p>
+      Take care always. 🌷
+    </p>
+
+    <button onclick="showPage('homePage')">
+      Back to Start 💗
+    </button>
+
+  </div>
+
+</section>
+
+
+<script>
+
+function showPage(id) {
+
+  document.querySelectorAll(".page").forEach(function(page) {
+    page.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+
+}
+
+
+function startSurprise() {
+
+  showPage("balloonPage");
+
+  const page = document.getElementById("balloonPage");
+
+  page.classList.remove("start-animation");
+
+  void page.offsetWidth;
+
+  page.classList.add("start-animation");
+
+  setTimeout(function() {
+
+    showPage("letterPage");
+
+  }, 4300);
+
+}
+
+</script>
+
+</body>
+  </html>
