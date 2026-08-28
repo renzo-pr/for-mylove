@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Surprise ❤️</title>
+<title>For You ❤️</title>
 
 <style>
 * {
@@ -13,21 +13,19 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: Georgia, serif;
-  color: #5b2634;
-  background:
-    radial-gradient(circle at 20% 20%, #fff 0 2px, transparent 3px),
-    radial-gradient(circle at 80% 30%, #fff 0 2px, transparent 3px),
-    linear-gradient(135deg, #ffd1dc, #fff0f4, #ffc1d0);
   overflow: hidden;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #ffd1dc, #fff0f5, #ffc0cb);
+  color: #682536;
 }
 
+/* PAGES */
 .page {
   display: none;
   min-height: 100vh;
   width: 100%;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 20px;
 }
@@ -38,623 +36,71 @@ body {
 
 .card {
   width: 100%;
-  max-width: 400px;
+  max-width: 390px;
   padding: 30px 22px;
+  background: rgba(255,255,255,.78);
   border-radius: 30px;
-  background: rgba(255,255,255,.75);
-  box-shadow: 0 15px 45px rgba(120,30,60,.18);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 15px 40px rgba(120,30,60,.18);
 }
 
 h1 {
   font-size: 31px;
-  margin: 12px 0;
-}
-
-p {
-  font-size: 17px;
-  line-height: 1.7;
-}
-
-button {
-  border: 0;
-  border-radius: 30px;
-  padding: 14px 25px;
-  background: #c9284b;
-  color: white;
-  font-size: 16px;
-  margin-top: 15px;
-  box-shadow: 0 8px 20px rgba(160,20,50,.25);
-}
-
-button:active {
-  transform: scale(.94);
-}
-
-/* =========================
-   HEART BALLOONS
-========================= */
-
-.balloons {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.balloon {
-  position: absolute;
-  font-size: 45px;
-  animation: gentleFloat 4s ease-in-out infinite;
-}
-
-.balloon:nth-child(1) {
-  left: 5%;
-  top: 12%;
-}
-
-.balloon:nth-child(2) {
-  right: 7%;
-  top: 18%;
-  font-size: 35px;
-  animation-delay: 1s;
-}
-
-.balloon:nth-child(3) {
-  left: 12%;
-  bottom: 15%;
-  font-size: 32px;
-  animation-delay: 2s;
-}
-
-.balloon:nth-child(4) {
-  right: 12%;
-  bottom: 13%;
-  font-size: 42px;
-  animation-delay: .5s;
-}
-
-.balloon:nth-child(5) {
-  left: 25%;
-  top: 7%;
-  font-size: 25px;
-  animation-delay: 1.5s;
-}
-
-.balloon:nth-child(6) {
-  right: 25%;
-  bottom: 8%;
-  font-size: 28px;
-  animation-delay: 2.5s;
-}
-
-@keyframes gentleFloat {
-  0%,100% {
-    transform: translateY(0) rotate(-4deg);
-  }
-
-  50% {
-    transform: translateY(-15px) rotate(4deg);
-  }
-}
-
-/* =========================
-   MAIN BALLOON
-========================= */
-
-.balloon-area {
-  position: relative;
-  width: 100%;
-  height: 430px;
-  overflow: hidden;
-}
-
-.main-balloon {
-  position: absolute;
-  left: 50%;
-  top: 150px;
-  transform: translateX(-50%);
-  cursor: pointer;
-  z-index: 5;
-}
-
-.big-heart {
-  font-size: 105  width: 100%;
-  max-width: 390px;
-  background: rgba(255,255,255,0.78);
-  border: 1px solid rgba(255,255,255,0.9);
-  border-radius: 28px;
-  padding: 30px 23px;
-  text-align: center;
-  box-shadow: 0 15px 40px rgba(150,70,100,0.15);
-  backdrop-filter: blur(8px);
-}
-
-h1 {
-  font-size: 30px;
-  margin: 12px 0 15px;
 }
 
 h2 {
-  font-size: 25px;
+  color: #a51f3d;
 }
 
 p {
   font-size: 17px;
   line-height: 1.7;
-}
-
-.small {
-  font-size: 14px;
-  opacity: 0.8;
 }
 
 button {
   border: none;
   border-radius: 30px;
   padding: 14px 25px;
-  margin-top: 18px;
-  background: #d9829a;
+  background: #c92749;
   color: white;
   font-size: 16px;
-  box-shadow: 0 8px 18px rgba(180,80,110,0.2);
+  margin-top: 15px;
 }
 
-button:active {
-  transform: scale(0.95);
-}
-
-/* Floating hearts */
-
-.heart {
+/* FLOATING HEARTS */
+.decor-heart {
   position: fixed;
-  bottom: -30px;
-  font-size: 20px;
-  animation: rise 7s linear infinite;
-  opacity: 0.65;
+  font-size: 28px;
+  animation: float 5s infinite ease-in-out;
   pointer-events: none;
 }
 
-.heart:nth-child(1) {
-  left: 10%;
-  animation-delay: 1s;
-}
+.h1 { left: 8%; top: 15%; }
+.h2 { right: 8%; top: 20%; animation-delay: 1s; }
+.h3 { left: 12%; bottom: 15%; animation-delay: 2s; }
+.h4 { right: 12%; bottom: 18%; animation-delay: 3s; }
+.h5 { left: 25%; top: 8%; animation-delay: .5s; }
+.h6 { right: 25%; bottom: 8%; animation-delay: 1.5s; }
 
-.heart:nth-child(2) {
-  left: 30%;
-  animation-delay: 3s;
-}
-
-.heart:nth-child(3) {
-  left: 55%;
-  animation-delay: 0s;
-}
-
-.heart:nth-child(4) {
-  left: 80%;
-  animation-delay: 2s;
-}
-
-@keyframes rise {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-
-  100% {
-    transform: translateY(-110vh) rotate(25deg);
-  }
-}
-
-/* Envelope */
-
-.envelope {
-  width: 260px;
-  height: 170px;
-  margin: 25px auto;
-  position: relative;
-  cursor: pointer;
-  perspective: 700px;
-}
-
-.envelope-body {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #e9a0b3;
-  border-radius: 8px;
-  box-shadow: 0 12px 25px rgba(150,70,100,0.2);
-}
-
-.flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 130px solid transparent;
-  border-right: 130px solid transparent;
-  border-top: 95px solid #d9829a;
-  transform-origin: top;
-  transition: transform 0.8s ease;
-  z-index: 3;
-}
-
-.letter {
-  position: absolute;
-  width: 220px;
-  height: 135px;
-  background: white;
-  left: 20px;
-  top: 15px;
-  border-radius: 5px;
-  transition: transform 0.8s ease;
-  z-index: 2;
-}
-
-.envelope.open .flap {
-  transform: rotateX(180deg);
-}
-
-.envelope.open .letter {
-  transform: translateY(-80px);
-}
-
-/* Letter */
-
-.letter-card {
-  text-align: left;
-  max-height: 70vh;
-  overflow-y: auto;
-}
-
-.letter-card h2 {
-  text-align: center;
-}
-
-.signature {
-  text-align: center;
-  font-size: 18px;
-  margin-top: 25px;
-}
-
-/* Sparkles */
-
-.sparkle {
-  font-size: 22px;
-  letter-spacing: 12px;
-}
-
-.final-heart {
-  font-size: 75px;
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
+@keyframes float {
   0%,100% {
-    transform: scale(1);
+    transform: translateY(0);
   }
-
   50% {
-    transform: scale(1.15);
+    transform: translateY(-15px);
   }
 }
-</style>
-</head>
 
-<body>
-
-<!-- Floating decorations -->
-<div class="heart">♡</div>
-<div class="heart">♥</div>
-<div class="heart">♡</div>
-<div class="heart">♥</div>
-
-
-<!-- PAGE 1 -->
-
-<section class="page active" id="page1">
-  <div class="card">
-
-    <div class="sparkle">✦ ♡ ✦</div>
-
-    <h1>Hey, Love 💗</h1>
-
-    <p>
-      I made a little something for you.
-    </p>
-
-    <p class="small">
-      Take your time and open it. 🤍
-    </p>
-
-    <button onclick="showPage(2)">
-      Open My Surprise 💌
-    </button>
-
-  </div>
-</section>
-
-
-<!-- PAGE 2 -->
-
-<section class="page" id="page2">
-  <div class="card">
-
-    <div class="sparkle">♡ ✦ ♡</div>
-
-    <h2>A Little Letter For You 💌</h2>
-
-    <p>
-      There's something I want you to read.
-    </p>
-
-    <div class="envelope" id="envelope" onclick="openEnvelope()">
-
-      <div class="letter"></div>
-
-      <div class="envelope-body"></div>
-
-      <div class="flap"></div>
-
-    </div>
-
-    <p class="small">
-      Tap the envelope 💗
-    </p>
-
-    <button id="letterButton" onclick="showPage(3)" style="display:none;">
-      Read My Letter 🤍
-    </button>
-
-  </div>
-</section>
-
-
-<!-- PAGE 3 -->
-
-<section class="page" id="page3">
-  <div class="card letter-card">
-
-    <div class="sparkle">✦ ♡ ✦</div>
-
-    <h2>My Letter To You 🤍</h2>
-
-    <p>
-      Hey love, I know we’ve had some misunderstandings lately, and I’m sorry for the moments when we ended up hurting each other. I don’t want our little arguments to make us forget how much we mean to each other.
-    </p>
-
-    <p>
-      I may not always say or do the right thing, but please know that I genuinely care about you and our relationship. I hope we can talk things through, understand each other better, and leave the bad feelings behind.
-    </p>
-
-    <p>
-      I still choose you, even on the days when things aren’t perfect. I love you, and I hope we can be okay again soon.
-    </p>
-
-    <p class="signature">
-      With love, always. 💗
-    </p>
-
-    <div style="text-align:center;">
-      <button onclick="showPage(4)">
-        Next ✨
-      </button>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- PAGE 4 -->
-
-<section class="page" id="page4">
-  <div class="card">
-
-    <div class="sparkle">✦ ✦ ✦</div>
-
-    <h1>One More Thing 🌷</h1>
-
-    <p>
-      I don't expect everything to be perfect.
-    </p>
-
-    <p>
-      I just hope that we can keep choosing to understand each other, talk things through, and appreciate the little moments we share.
-    </p>
-
-    <p>
-      You are important to me. 🤍
-    </p>
-
-    <button onclick="showPage(5)">
-      One Last Surprise 💗
-    </button>
-
-  </div>
-</section>
-
-
-<!-- PAGE 5 -->
-
-<section class="page" id="page5">
-  <div class="card">
-
-    <div class="final-heart">💗</div>
-
-    <h1>Thank You</h1>
-
-    <p>
-      Thank you for being you.
-    </p>
-
-    <p>
-      I hope this little surprise made you smile. 🌷
-    </p>
-
-    <p>
-      Whatever happens, I hope we always remember the good moments and the reasons we care about each other.
-    </p>
-
-    <div class="sparkle">♡ ✦ ♡</div>
-
-    <p>
-      <strong>I'm glad I made this for you. 🤍</strong>
-    </p>
-
-  </div>
-</section>
-
-
-<script>
-
-function showPage(number) {
-
-  document.querySelectorAll(".page").forEach(function(page) {
-    page.classList.remove("active");
-  });
-
-  document.getElementById("page" + number).classList.add("active");
-
-  window.scrollTo(0, 0);
+/* BALLOON PAGE */
+.balloon-area {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-
-function openEnvelope() {
-
-  const envelope = document.getElementById("envelope");
-
-  envelope.classList.add("open");
-
-  setTimeout(function() {
-    document.getElementById("letterButton").style.display = "inline-block";
-  }, 900);
-
-}
-
-</script>
-
-</body>
-    </html>    h1 {
-      font-size: 32px;
-      margin: 15px 0;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    button {
-      border: none;
-      padding: 14px 28px;
-      border-radius: 30px;
-      background: #d98b9b;
-      color: white;
-      font-size: 17px;
-      cursor: pointer;
-      margin-top: 20px;
-    }
-
-    button:active {
-      transform: scale(0.95);
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <div class="page">
-
-    <div id="page1">
-      <div class="heart">💗</div>
-
-      <h1>Hey, You...</h1>
-
-      <p>
-        I made a little something for you.
-        <br>
-        Take a moment and open it. 🤍
-      </p>
-
-      <button onclick="nextPage(2)">
-        Open This 💌
-      </button>
-    </div>
-
-
-    <div id="page2" class="hidden">
-      <div class="heart">💌</div>
-
-      <h1>A Little Message</h1>
-
-      <p>
-        I may not always know the perfect words,
-        but I hope you know how much I appreciate
-        having you in my life.
-      </p>
-
-      <button onclick="nextPage(3)">
-        Continue 🤍
-      </button>
-    </div>
-
-
-    <div id="page3" class="hidden">
-      <div class="heart">✨</div>
-
-      <h1>Thank You</h1>
-
-      <p>
-        Thank you for the little moments,
-        the conversations, the laughs,
-        and everything that makes you special.
-      </p>
-
-      <button onclick="nextPage(4)">
-        One Last Thing 💗
-      </button>
-    </div>
-
-
-    <div id="page4" class="hidden">
-      <div class="heart">🌷</div>
-
-      <h1>For You</h1>
-
-      <p>
-        No matter how simple this website is,
-        I made it with a lot of thought.
-        <br><br>
-        I hope it makes you smile today. 🤍
-      </p>
-
-      <p><strong>— From someone who cares about you 💗</strong></p>
-    </div>
-
-  </div>
-
-
-  <script>
-    function nextPage(number) {
-      document.querySelectorAll(".page > div").forEach(function(page) {
-        page.classList.add("hidden");
-      });
-
-      document.getElementById("page" + number).classList.remove("hidden");
-    }
-  </script>
-
-</body>
-  </html>
+.main-balloon {
+  position: absolute;
+  left: 50%;
+  top: 190px;
+  transform: translateX(-50%);
+  z-index: 5;
