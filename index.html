@@ -4,661 +4,497 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For You ❤️</title>
+<title>Hey Baby</title>
 
 <style>
 * {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  margin: 0;
-  width: 100%;
-  height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  overflow: hidden;
-  font-family: Georgia, "Times New Roman", serif;
-  color: #642536;
-  background:
-    radial-gradient(circle at 20% 20%, #ffe5ed 0 5%, transparent 6%),
-    radial-gradient(circle at 80% 30%, #ffe1e9 0 4%, transparent 5%),
-    linear-gradient(135deg, #ffd0dc, #fff0f5, #ffc2d0);
+    font-family: "Courier New", monospace;
+    background: #ffd6e6;
+    color: #603448;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* =========================
-   PAGE SYSTEM
+   PAGE
 ========================= */
 
 .page {
-  display: none;
-  width: 100%;
-  height: 100vh;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
+    display: none;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .page.active {
-  display: flex;
+    display: flex;
 }
 
 /* =========================
-   FIRST / FINAL CARD
+   MAIN CARD
 ========================= */
 
 .card {
-  width: 100%;
-  max-width: 390px;
-  padding: 35px 25px;
-  text-align: center;
+    width: 100%;
+    max-width: 900px;
+    min-height: 580px;
 
-  background: rgba(255,255,255,0.90);
+    background: #fff;
+    border: 7px solid #fff;
+    outline: 4px solid #ed8fb2;
 
-  border: 1px solid rgba(255,255,255,0.9);
+    box-shadow:
+        8px 8px 0 #d96594,
+        12px 12px 0 #f6a9c5;
 
-  border-radius: 30px;
-
-  box-shadow:
-    0 15px 40px rgba(100,30,50,0.18);
+    position: relative;
+    overflow: hidden;
 }
 
-.card h1 {
-  margin: 15px 0;
-  color: #b51f42;
-  font-size: 31px;
+/* Inner pixel border */
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+
+    border: 3px dashed #f3a6c2;
+
+    pointer-events: none;
 }
 
-.card p {
-  font-size: 17px;
-  line-height: 1.7;
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    position: relative;
+    z-index: 5;
+
+    min-height: 580px;
+
+    padding: 70px 150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
 }
+
+/* =========================
+   TITLES
+========================= */
+
+.small-title {
+    font-size: 13px;
+    letter-spacing: 4px;
+    color: #d66a96;
+
+    margin-bottom: 14px;
+}
+
+h1 {
+    font-size: clamp(38px, 8vw, 70px);
+    color: #e85d98;
+
+    text-shadow:
+        4px 4px 0 #ffd0e0;
+
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: clamp(28px, 6vw, 46px);
+    color: #e85d98;
+
+    text-shadow:
+        3px 3px 0 #ffd5e4;
+
+    margin-bottom: 22px;
+}
+
+/* =========================
+   MESSAGE
+========================= */
+
+.message {
+    max-width: 600px;
+
+    font-size: 14px;
+    line-height: 1.9;
+
+    margin-bottom: 28px;
+}
+
+/* =========================
+   BUTTON
+========================= */
 
 button {
-  border: none;
-  border-radius: 30px;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
 
-  padding: 14px 25px;
-  margin-top: 15px;
+    font-size: 13px;
 
-  background: #c92749;
-  color: white;
+    color: white;
+    background: #ed82ae;
 
-  font-size: 16px;
+    border: 4px solid white;
+    outline: 3px solid #d96293;
 
-  box-shadow:
-    0 8px 20px rgba(150,20,50,0.22);
+    padding: 13px 24px;
 
-  cursor: pointer;
+    cursor: pointer;
+
+    box-shadow:
+        5px 5px 0 #c95285;
+
+    transition: 0.15s;
+}
+
+button:hover {
+    transform: translate(3px, 3px);
+
+    box-shadow:
+        2px 2px 0 #c95285;
 }
 
 button:active {
-  transform: scale(0.95);
+    transform: translate(5px, 5px);
 }
 
 /* =========================
-   DECORATIVE HEARTS
+   EMOTION BUTTONS
 ========================= */
 
-.decor {
-  position: fixed;
-  z-index: 1;
+.emotions {
+    display: grid;
 
-  font-size: 25px;
-  opacity: 0.65;
+    grid-template-columns: repeat(2, 1fr);
 
-  pointer-events: none;
+    gap: 18px;
 
-  animation:
-    decorativeFloat 4s ease-in-out infinite;
+    width: 100%;
+    max-width: 500px;
 }
 
-.d1 {
-  left: 7%;
-  top: 15%;
-}
+.emotion {
+    min-height: 70px;
 
-.d2 {
-  right: 8%;
-  top: 20%;
-  animation-delay: 1s;
-}
-
-.d3 {
-  left: 10%;
-  bottom: 15%;
-  animation-delay: 2s;
-}
-
-.d4 {
-  right: 10%;
-  bottom: 13%;
-  animation-delay: 3s;
-}
-
-@keyframes decorativeFloat {
-
-  0%,100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-15px);
-  }
-
+    background: #f58eb7;
 }
 
 /* =========================
-   BALLOON PAGE
+   SIDE CHARACTER
 ========================= */
 
-#balloonPage {
-  position: relative;
-  overflow: hidden;
-  padding: 0;
+.character {
+    position: absolute;
+
+    width: 105px;
+    height: 150px;
+
+    bottom: 30px;
+
+    z-index: 10;
+}
+
+.character.left {
+    left: 25px;
+}
+
+.character.right {
+    right: 25px;
+}
+
+/* hair */
+
+.hair {
+    position: absolute;
+
+    width: 75px;
+    height: 45px;
+
+    top: 8px;
+    left: 15px;
+
+    background: #e99ac8;
+
+    border: 5px solid #603448;
+}
+
+/* face */
+
+.head {
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    top: 25px;
+    left: 20px;
+
+    background: #ffd8c4;
+
+    border: 5px solid #603448;
+}
+
+/* eyes */
+
+.eye {
+    position: absolute;
+
+    width: 9px;
+    height: 12px;
+
+    background: #603448;
+
+    top: 33px;
+}
+
+.eye.one {
+    left: 14px;
+}
+
+.eye.two {
+    right: 14px;
+}
+
+/* mouth */
+
+.mouth {
+    position: absolute;
+
+    width: 15px;
+    height: 5px;
+
+    background: #603448;
+
+    bottom: 10px;
+    left: 20px;
+}
+
+/* body */
+
+.body {
+    position: absolute;
+
+    width: 65px;
+    height: 52px;
+
+    left: 18px;
+    bottom: 0;
+
+    background: #f47ead;
+
+    border: 5px solid #603448;
+}
+
+/* arms */
+
+.arm-left,
+.arm-right {
+    position: absolute;
+
+    width: 18px;
+    height: 35px;
+
+    background: #ffd8c4;
+
+    border: 4px solid #603448;
+
+    bottom: 5px;
+}
+
+.arm-left {
+    left: 4px;
+    transform: rotate(25deg);
+}
+
+.arm-right {
+    right: 4px;
+    transform: rotate(-25deg);
 }
 
 /* =========================
-   100 BALLOON FIELD
+   FLOATING HEARTS
 ========================= */
 
-.balloon-field {
-  position: absolute;
-  inset: 0;
+.heart {
+    position: absolute;
 
-  width: 100%;
-  height: 100%;
+    color: #ee78aa;
 
-  overflow: visible;
+    font-size: 26px;
+
+    animation: floatHeart 2s infinite ease-in-out;
+}
+
+.heart.one {
+    top: 5px;
+    left: -5px;
+}
+
+.heart.two {
+    top: 45px;
+    right: -10px;
+
+    animation-delay: .5s;
+}
+
+@keyframes floatHeart {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
 }
 
 /* =========================
-   HEART BALLOON
+   STARS
 ========================= */
 
-.balloon {
-  position: absolute;
+.star {
+    position: absolute;
 
-  width: 27px;
-  height: 27px;
+    color: #ed82ae;
 
-  background: #e32645;
+    font-size: 20px;
 
-  border-radius:
-    50% 50% 50% 0;
+    animation: sparkle 1.5s infinite alternate;
 
-  transform: rotate(-45deg);
-
-  z-index: 4;
-
-  filter:
-    drop-shadow(0 5px 5px rgba(100,0,30,0.18));
+    z-index: 2;
 }
 
-/* top circles */
-
-.balloon::before,
-.balloon::after {
-  content: "";
-
-  position: absolute;
-
-  width: 27px;
-  height: 27px;
-
-  background: #e32645;
-
-  border-radius: 50%;
+.s1 {
+    top: 30px;
+    left: 35px;
 }
 
-.balloon::before {
-  top: -13.5px;
-  left: 0;
+.s2 {
+    top: 60px;
+    right: 40px;
 }
 
-.balloon::after {
-  top: 0;
-  left: 13.5px;
+.s3 {
+    bottom: 45px;
+    left: 50px;
 }
 
-/* =========================
-   BALLOON KNOT
-========================= */
-
-.balloon .knot {
-  position: absolute;
-
-  width: 7px;
-  height: 7px;
-
-  background: #b91e38;
-
-  left: 10px;
-  bottom: -5px;
-
-  transform: rotate(45deg);
-
-  z-index: 3;
+.s4 {
+    bottom: 65px;
+    right: 50px;
 }
 
-/* =========================
-   BALLOON STRING
-========================= */
-
-.balloon .string {
-  position: absolute;
-
-  width: 1px;
-  height: 90px;
-
-  background: #76545d;
-
-  left: 13px;
-  top: 27px;
-
-  transform:
-    rotate(45deg);
-
-  transform-origin: top;
-
-  z-index: -1;
-}
-
-/* =========================
-   MAIN BALLOON
-========================= */
-
-.main-balloon {
-  position: absolute;
-
-  left: 50%;
-  top: 27%;
-
-  width: 68px;
-  height: 68px;
-
-  background: #d91f43;
-
-  border-radius:
-    50% 50% 50% 0;
-
-  transform:
-    translateX(-50%)
-    rotate(-45deg);
-
-  z-index: 12;
-
-  filter:
-    drop-shadow(0 9px 9px rgba(100,0,30,0.25));
-}
-
-.main-balloon::before,
-.main-balloon::after {
-  content: "";
-
-  position: absolute;
-
-  width: 68px;
-  height: 68px;
-
-  background: #d91f43;
-
-  border-radius: 50%;
-}
-
-.main-balloon::before {
-  top: -34px;
-  left: 0;
-}
-
-.main-balloon::after {
-  top: 0;
-  left: 34px;
-}
-
-/* main knot */
-
-.main-knot {
-  position: absolute;
-
-  width: 11px;
-  height: 11px;
-
-  background: #ad1835;
-
-  left: 29px;
-  bottom: -7px;
-
-  transform: rotate(45deg);
-
-  z-index: 3;
-}
-
-/* =========================
-   MAIN STRING
-========================= */
-
-.main-string {
-  position: absolute;
-
-  width: 2px;
-  height: 205px;
-
-  background: #76545d;
-
-  left: 34px;
-  top: 65px;
-
-  transform:
-    rotate(45deg);
-
-  transform-origin: top;
-
-  z-index: -1;
-}
-
-/* =========================
-   PAPER LETTER
-========================= */
-
-.letter-paper {
-  position: absolute;
-
-  left: 50%;
-
-  top: calc(27% + 215px);
-
-  transform:
-    translateX(-50%);
-
-  width: 280px;
-  max-width: 82vw;
-
-  min-height: 185px;
-
-  padding: 28px 30px;
-
-  background: #fffdf7;
-
-  border:
-    1px solid #eaded4;
-
-  box-shadow:
-    0 12px 30px rgba(70,20,30,0.20);
-
-  z-index: 10;
-
-  text-align: center;
-}
-
-/* =========================
-   PAPER HEART DECORATIONS
-   ONLY CORNERS
-========================= */
-
-.paper-heart {
-  position: absolute;
-
-  font-size: 22px;
-
-  pointer-events: none;
-}
-
-/* top corners */
-
-.paper-heart.top-left {
-  top: 8px;
-  left: 10px;
-}
-
-.paper-heart.top-right {
-  top: 8px;
-  right: 10px;
-}
-
-/* bottom corners */
-
-.paper-heart.bottom-left {
-  bottom: 8px;
-  left: 10px;
-}
-
-.paper-heart.bottom-right {
-  bottom: 8px;
-  right: 10px;
-}
-
-/* tiny side hearts */
-
-.paper-heart.side-left {
-  left: 8px;
-  top: 48%;
-
-  font-size: 15px;
-}
-
-.paper-heart.side-right {
-  right: 8px;
-  top: 48%;
-
-  font-size: 15px;
-}
-
-/* =========================
-   PAPER CONTENT
-========================= */
-
-.letter-paper h3 {
-  margin: 5px 0 14px;
-
-  color: #a51f3d;
-
-  font-size: 22px;
-}
-
-.letter-paper p {
-  margin: 7px 0;
-
-  font-size: 14px;
-
-  line-height: 1.6;
-}
-
-/* =========================
-   FLYING ANIMATION
-========================= */
-
-.flying .balloon {
-  animation:
-    balloonFly 6s ease-in forwards;
-}
-
-.flying .main-balloon {
-  animation:
-    mainBalloonFly 6s ease-in-out forwards;
-}
-
-.flying .letter-paper {
-  animation:
-    paperFly 6s ease-in-out forwards;
-}
-
-/* =========================
-   SMALL BALLOON MOVEMENT
-========================= */
-
-@keyframes balloonFly {
-
-  0% {
-    margin-top: 0;
-    opacity: 1;
-  }
-
-  20% {
-    margin-left: 10px;
-  }
-
-  40% {
-    margin-left: -12px;
-  }
-
-  60% {
-    margin-left: 13px;
-  }
-
-  80% {
-    margin-left: -8px;
-  }
-
-  100% {
-    margin-top: -125vh;
-    opacity: 0.95;
-  }
-
-}
-
-/* =========================
-   MAIN BALLOON FLIGHT
-========================= */
-
-@keyframes mainBalloonFly {
-
-  0% {
-    top: 27%;
-    margin-left: 0;
-  }
-
-  20% {
-    margin-left: 12px;
-  }
-
-  40% {
-    margin-left: -12px;
-  }
-
-  60% {
-    margin-left: 14px;
-  }
-
-  80% {
-    margin-left: -8px;
-  }
-
-  100% {
-    top: -35%;
-    margin-left: 0;
-  }
-
-}
-
-/* =========================
-   PAPER FOLLOWS BALLOON
-========================= */
-
-@keyframes paperFly {
-
-  0% {
-    top: calc(27% + 215px);
-    margin-left: 0;
-  }
-
-  20% {
-    margin-left: 12px;
-  }
-
-  40% {
-    margin-left: -12px;
-  }
-
-  60% {
-    margin-left: 14px;
-  }
-
-  80% {
-    margin-left: -8px;
-  }
-
-  100% {
-    top: -10%;
-    margin-left: 0;
-  }
-
-}
-
-/* =========================
-   LETTER PAGE
-========================= */
-
-#letterPage {
-  overflow-y: auto;
-
-  align-items: flex-start;
-
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.letter {
-  width: 100%;
-  max-width: 390px;
-
-  background: #fffdf8;
-
-  padding: 30px 24px;
-
-  border-radius: 12px;
-
-  box-shadow:
-    0 15px 40px rgba(100,30,50,0.20);
-}
-
-.letter h2 {
-  margin-top: 0;
-
-  text-align: center;
-
-  color: #a51f3d;
-
-  font-size: 25px;
-}
-
-.letter p {
-  font-size: 16px;
-
-  line-height: 1.75;
-
-  margin: 16px 0;
-}
-
-.signature {
-  text-align: center;
-
-  margin-top: 25px;
+@keyframes sparkle {
+
+    from {
+        opacity: .3;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.2);
+    }
 }
 
 /* =========================
    FINAL PAGE
 ========================= */
 
-.final-heart {
-  font-size: 80px;
-
-  animation:
-    heartbeat 1.5s infinite;
+.final-page {
+    background: #fff0f6;
 }
 
-@keyframes heartbeat {
+/* =========================
+   MOBILE
+========================= */
 
-  0%,100% {
-    transform: scale(1);
-  }
+@media (max-width: 650px) {
 
-  50% {
-    transform: scale(1.12);
-  }
+    .page {
+        padding: 12px;
+    }
 
+    .card {
+        min-height: 680px;
+    }
+
+    .content {
+        min-height: 680px;
+
+        padding:
+            75px 55px 85px;
+    }
+
+    .character {
+        transform: scale(.72);
+    }
+
+    .character.left {
+        left: -8px;
+    }
+
+    .character.right {
+        right: -8px;
+    }
+
+    .message {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .emotions {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .small-title {
+        font-size: 10px;
+        letter-spacing: 2px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+}
+
+/* =========================
+   EXTRA SMALL PHONES
+========================= */
+
+@media (max-width: 380px) {
+
+    .content {
+        padding-left: 38px;
+        padding-right: 38px;
+    }
+
+    .message {
+        font-size: 12px;
+    }
+
+    .character {
+        transform: scale(.6);
+    }
 }
 </style>
 </head>
@@ -666,378 +502,732 @@ button:active {
 
 <body>
 
-<!-- =========================
-     DECORATIVE HEARTS
-========================= -->
 
-<div class="decor d1">❤️</div>
-<div class="decor d2">❤️</div>
-<div class="decor d3">❤️</div>
-<div class="decor d4">❤️</div>
-
-
-<!-- =========================
+<!-- =====================================================
      PAGE 1
-========================= -->
+===================================================== -->
 
-<section
-  class="page active"
-  id="homePage">
+<section class="page active" id="page1">
 
-  <div class="card">
+<div class="card">
 
-    <div style="font-size:34px;">
-      ♡ ✦ ♡
+    <span class="star s1">✦</span>
+    <span class="star s2">✧</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">✧</span>
+
+    <!-- LEFT CHARACTER -->
+
+    <div class="character left">
+
+        <div class="hair"></div>
+
+        <div class="head">
+
+            <span class="eye one"></span>
+            <span class="eye two"></span>
+
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+        <span class="heart one">♡</span>
+
     </div>
 
-    <h1>
-  Hi Baby ❤️
-    </h1>
 
-    <p>
-      I made a little surprise just for you.
-    </p>
+    <!-- RIGHT CHARACTER -->
 
-    <p>
-      There's something waiting for you... 🎈
-    </p>
+    <div class="character right">
 
-    <button onclick="startSurprise()">
-      Open My Surprise 💌
-    </button>
+        <div class="hair"></div>
 
-  </div>
+        <div class="head">
+
+            <span class="eye one"></span>
+            <span class="eye two"></span>
+
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+        <span class="heart two">♡</span>
+
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div class="content">
+
+        <div class="small-title">
+            A LITTLE SURPRISE FOR YOU
+        </div>
+
+        <h1>Hey Baby</h1>
+
+        <p class="message">
+            I made this little corner of the internet
+            just for you.
+
+            <br><br>
+
+            It's a tiny surprise you can open whenever
+            you need a little reminder that someone
+            is thinking about you.
+
+            <br><br>
+
+            So before you continue...
+
+            take a little breath and enjoy this.
+        </p>
+
+        <button onclick="goToPage(2)">
+            OPEN THIS
+        </button>
+
+    </div>
+
+</div>
 
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      PAGE 2
-     BALLOON ANIMATION
-========================= -->
+===================================================== -->
 
-<section
-  class="page"
-  id="balloonPage">
+<section class="page" id="page2">
 
+<div class="card">
 
-  <!-- 100 BALLOONS -->
-
-  <div
-    class="balloon-field"
-    id="balloonField">
-  </div>
+    <span class="star s1">✦</span>
+    <span class="star s2">✧</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">✧</span>
 
 
-  <!-- MAIN BALLOON -->
+    <!-- LEFT CHARACTER -->
 
-  <div class="main-balloon">
+    <div class="character left">
 
-    <div class="main-knot"></div>
+        <div class="hair"></div>
 
-    <div class="main-string"></div>
+        <div class="head">
 
-  </div>
+            <span class="eye one"></span>
+            <span class="eye two"></span>
 
+            <span class="mouth"></span>
 
-  <!-- PAPER ATTACHED TO MAIN
-       BALLOON -->
+        </div>
 
-  <div class="letter-paper">
+        <div class="body"></div>
 
-    <!-- CORNER HEARTS ONLY -->
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
 
-    <span class="paper-heart top-left">
-      ❤️
-    </span>
-
-    <span class="paper-heart top-right">
-      ❤️
-    </span>
-
-    <span class="paper-heart bottom-left">
-      ❤️
-    </span>
-
-    <span class="paper-heart bottom-right">
-      ❤️
-    </span>
-
-    <span class="paper-heart side-left">
-      ♥
-    </span>
-
-    <span class="paper-heart side-right">
-      ♥
-    </span>
-
-
-    <h3>
-      A Short Message ❤️
-    </h3>
-
-    <p>
-      Something special is waiting for you...
-    </p>
-
-    <p>
-      💌
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =========================
-     PAGE 3
-     YOUR LETTER
-========================= -->
-
-<section
-  class="page"
-  id="letterPage">
-
-  <div class="letter">
-
-    <h2>
-      A Message For You 🤍
-    </h2>
-
-
-    <p>
-      Hey Baby, I know we’ve had some misunderstandings lately, and I’m sorry for the moments when we ended up hurting each other. I don’t want our little arguments to make us forget how much we mean to each other.
-    </p>
-
-
-    <p>
-      I may not always say or do the right thing, but please know that I genuinely care about you and our relationship. I hope we can talk things through, understand each other better, and leave the bad feelings behind.
-    </p>
-
-
-    <p>
-      I still choose you, even on the days when things aren’t perfect. I love you, and I hope we can be okay again soon.
-    </p>
-
-
-    <p class="signature">
-      With love, always. ❤️
-    </p>
-
-
-    <div style="text-align:center;">
-
-      <button onclick="showPage('finalPage')">
-        Continue ✨
-      </button>
+        <span class="heart one">♡</span>
 
     </div>
 
-  </div>
 
-</section>
+    <!-- RIGHT CHARACTER -->
 
+    <div class="character right">
 
-<!-- =========================
-     PAGE 4
-     FINAL
-========================= -->
+        <div class="hair"></div>
 
-<section
-  class="page"
-  id="finalPage">
+        <div class="head">
 
-  <div class="card">
+            <span class="eye one"></span>
+            <span class="eye two"></span>
 
-    <div class="final-heart">
-      ❤️
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+        <span class="heart two">♡</span>
+
     </div>
 
-    <h1>
-      Thank You 🤍
-    </h1>
 
-    <p>
-      I hope this little surprise made you smile.
-    </p>
+    <div class="content">
 
-    <p>
-      Thank you for taking the time to read my letter.
-    </p>
+        <div class="small-title">
+            OPEN THIS WHENEVER...
+        </div>
 
-    <p>
-      Take care always. 🌷
-    </p>
+        <h2>How are you feeling?</h2>
 
-    <button onclick="showPage('homePage')">
-      Back to Start 💗
-    </button>
+        <p class="message">
+            Maybe one of these little messages
+            is exactly what you need today.
+        </p>
 
-  </div>
+
+        <div class="emotions">
+
+            <button
+                class="emotion"
+                onclick="goToPage(3)">
+                You're Sad
+            </button>
+
+            <button
+                class="emotion"
+                onclick="goToPage(4)">
+                You Miss Me
+            </button>
+
+            <button
+                class="emotion"
+                onclick="goToPage(5)">
+                You're Mad
+            </button>
+
+            <button
+                class="emotion"
+                onclick="goToPage(6)">
+                You Need Me
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 </section>
 
 
-<script>
 
-/* =========================
-   CREATE 100 BALLOONS
-========================= */
+<!-- =====================================================
+     PAGE 3 — SAD
+===================================================== -->
 
-const field =
-  document.getElementById("balloonField");
+<section class="page" id="page3">
 
-for (let i = 0; i < 100; i++) {
+<div class="card">
 
-  const balloon =
-    document.createElement("div");
+    <span class="star s1">✦</span>
+    <span class="star s2">✧</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">✧</span>
 
-  balloon.className =
-    "balloon";
 
+    <div class="character left">
 
-  /*
-    Natural spacing.
+        <div class="hair"></div>
 
-    They are NOT in rows.
-    They are NOT in one line.
-  */
+        <div class="head">
 
-  balloon.style.left =
-    (2 + Math.random() * 94) + "%";
+            <span class="eye one"></span>
+            <span class="eye two"></span>
 
-  balloon.style.top =
-    (3 + Math.random() * 86) + "%";
+            <span class="mouth"></span>
 
+        </div>
 
-  /*
-    Different sizes.
-  */
+        <div class="body"></div>
 
-  const size =
-    22 + Math.random() * 15;
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
 
-  balloon.style.width =
-    size + "px";
+        <span class="heart one">♡</span>
 
-  balloon.style.height =
-    size + "px";
+    </div>
 
 
-  /*
-    Keep balloons visually separated.
-  */
+    <div class="character right">
 
-  balloon.style.zIndex =
-    Math.floor(2 + Math.random() * 7);
+        <div class="hair"></div>
 
+        <div class="head">
 
-  /*
-    Different animation timing.
-  */
+            <span class="eye one"></span>
+            <span class="eye two"></span>
 
-  balloon.style.animationDelay =
-    (Math.random() * 1.4) + "s";
+            <span class="mouth"></span>
 
+        </div>
 
-  /*
-    Knot.
-  */
+        <div class="body"></div>
 
-  const knot =
-    document.createElement("span");
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
 
-  knot.className =
-    "knot";
+        <span class="heart two">♡</span>
 
+    </div>
 
-  /*
-    String.
-  */
 
-  const string =
-    document.createElement("span");
+    <div class="content">
 
-  string.className =
-    "string";
+        <div class="small-title">
+            OPEN THIS WHENEVER...
+        </div>
 
+        <h2>You're Sad</h2>
 
-  balloon.appendChild(knot);
+        <p class="message">
 
-  balloon.appendChild(string);
+            Hey baby,
 
-  field.appendChild(balloon);
+            <br><br>
 
-}
+            If you're feeling sad right now,
+            I hope you remember that you don't
+            have to face everything alone.
 
+            <br><br>
 
-/* =========================
-   CHANGE PAGE
-========================= */
+            It's okay to have bad days.
+            It's okay to feel tired, overwhelmed,
+            or simply not okay.
 
-function showPage(id) {
+            <br><br>
 
-  document
-    .querySelectorAll(".page")
-    .forEach(function(page) {
+            I may not always know exactly what
+            to say or do, but please know that
+            I care about you so much.
 
-      page.classList.remove("active");
+            <br><br>
 
-    });
+            Take your time, breathe, and be
+            gentle with yourself today.
 
+            <br><br>
 
-  document
-    .getElementById(id)
-    .classList.add("active");
+            I hope this little message makes
+            your day a little lighter.
 
-}
+            <br><br>
 
+            I'm always rooting for you, baby.
 
-/* =========================
-   START SURPRISE
-========================= */
+        </p>
 
-function startSurprise() {
+        <button onclick="goToPage(2)">
+            BACK
+        </button>
 
-  showPage("balloonPage");
+    </div>
 
+</div>
 
-  const scene =
-    document.getElementById("balloonPage");
+</section>
 
 
-  /*
-    Reset animation.
-  */
 
-  scene.classList.remove("flying");
+<!-- =====================================================
+     PAGE 4 — MISS ME
+===================================================== -->
 
+<section class="page" id="page4">
 
-  /*
-    Force browser to restart
-    the animation.
-  */
+<div class="card">
 
-  void scene.offsetWidth;
+    <span class="star s1">✦</span>
+    <span class="star s2">✧</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">✧</span>
 
 
-  scene.classList.add("flying");
+    <div class="character left">
 
+        <div class="hair"></div>
 
-  /*
-    After the balloons and paper
-    fly away, show the letter.
-  */
+        <div class="head">
 
-  setTimeout(function() {
+            <span class="eye one"></span>
+            <span class="eye two"></span>
 
-    showPage("letterPage");
+            <span class="mouth"></span>
 
-  }, 6300);
+        </div>
 
-}
+        <div class="body"></div>
 
-</script>
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
 
-</body>
-  </html>
+        <span class="heart one">♡</span>
+
+    </div>
+
+
+    <div class="character right">
+
+        <div class="hair"></div>
+
+        <div class="head">
+
+            <span class="eye one"></span>
+            <span class="eye two"></span>
+
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+        <span class="heart two">♡</span>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="small-title">
+            OPEN THIS WHENEVER...
+        </div>
+
+        <h2>You Miss Me</h2>
+
+        <p class="message">
+
+            Hey baby,
+
+            <br><br>
+
+            If you came here because you miss me,
+            I hope this message makes you feel
+            a little closer to me.
+
+            <br><br>
+
+            I miss you too.
+
+            <br><br>
+
+            Even when we're not together,
+            you're still someone I think about
+            throughout my day.
+
+            <br><br>
+
+            I wish I could be there with you,
+            but until then, let this little message
+            remind you that you're never forgotten.
+
+            <br><br>
+
+            No matter the distance,
+            you still have a special place in my heart.
+
+            <br><br>
+
+            I miss you, baby.
+            More than you know.
+
+        </p>
+
+        <button onclick="goToPage(2)">
+            BACK
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 5 — MAD
+===================================================== -->
+
+<section class="page" id="page5">
+
+<div class="card">
+
+    <span class="star s1">✦</span>
+    <span class="star s2">✧</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">✧</span>
+
+
+    <div class="character left">
+
+        <div class="hair"></div>
+
+        <div class="head">
+
+            <span class="eye one"></span>
+            <span class="eye two"></span>
+
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+        <span class="heart one">♡</span>
+
+    </div>
+
+
+    <div class="character right">
+
+        <div class="hair"></div>
+
+        <div class="head">
+
+            <span class="eye one"></span>
+            <span class="eye two"></span>
+
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+        <span class="heart two">♡</span>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="small-title">
+            OPEN THIS WHENEVER...
+        </div>
+
+        <h2>You're Mad</h2>
+
+        <p class="message">
+
+            Hey baby,
+
+            <br><br>
+
+            If you're angry right now,
+            take a moment to breathe and
+            give yourself the space you need.
+
+            <br><br>
+
+            If I did something that hurt you,
+            I'm truly sorry.
+
+            <br><br>
+
+            Your feelings matter to me,
+            and I never want you to feel
+            like they don't.
+
+            <br><br>
+
+            I don't want one bad moment
+            to erase all the good things
+            we've shared.
+
+            <br><br>
+
+            Whenever you're ready,
+            I hope we can talk, listen,
+            and understand each other better.
+
+            <br><br>
+
+            I'm still here, baby.
+
+        </p>
+
+        <button onclick="goToPage(2)">
+            BACK
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 6 — YOU NEED ME
+===================================================== -->
+
+<section class="page" id="page6">
+
+<div class="card">
+
+    <span class="star s1">✦</span>
+    <span class="star s2">✧</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">✧</span>
+
+
+    <div class="character left">
+
+        <div class="hair"></div>
+
+        <div class="head">
+
+            <span class="eye one"></span>
+            <span class="eye two"></span>
+
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+        <span class="heart one">♡</span>
+
+    </div>
+
+
+    <div class="character right">
+
+        <div class="hair"></div>
+
+        <div class="head">
+
+            <span class="eye one"></span>
+            <span class="eye two"></span>
+
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+        <span class="heart two">♡</span>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="small-title">
+            OPEN THIS WHENEVER...
+        </div>
+
+        <h2>You Need Me</h2>
+
+        <p class="message">
+
+            Hey baby,
+
+            <br><br>
+
+            If you came here because you need me,
+            then I hope these words remind you
+            that you don't have to feel alone.
+
+            <br><br>
+
+            Even if I can't be beside you
+            at this exact moment,
+            my care for you is still here.
+
+            <br><br>
+
+            Whenever you need someone to listen,
+            someone to remind you that you're
+            important, or simply someone to think of,
+            remember that you can always come back here.
+
+            <br><br>
+
+            You mean so much to me, baby.
+
+            <br><br>
+
+            And I hope you always remember that.
+
+        </p>
+
+        <button onclick="goToPage(2)">
+            BACK
+        </button>
+
+        <br>
+
+        <button onclick="goToPage(7)">
+            ONE LAST THING
+        </button>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE 7 — FINAL
+===================================================== -->
+
+<section class="page final-page" id="page7">
+
+<div class="card">
+
+    <span class="star s1">✦</span>
+    <span class="star s2">✧</span>
+    <span class="star s3">✦</span>
+    <span class="star s4">✧</span>
+
+
+    <div class="character left">
+
+        <div class="hair"></div>
+
+        <div class="head">
+
+            <span class="eye one"></span>
+            <span class="eye two"></span>
+
+            <span class="mouth"></span>
+
+        </div>
+
+        <div class="body"></div>
+
+        <div class="arm-left"></div>
+        <div class="arm-right"></div>
+
+    </div>
+
+
+    <div class="character right">
+
+  
