@@ -3,23 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>For My Baby</title>
 
 <style>
-
-/* =========================================
-   RESET
-========================================= */
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-html,
-body {
+html, body {
     width: 100%;
     min-height: 100%;
 }
@@ -31,159 +24,101 @@ body {
     overflow-x: hidden;
 }
 
-
-/* =========================================
-   PAGE SYSTEM
-========================================= */
-
 .page {
     display: none;
-
     width: 100%;
     min-height: 100vh;
-
     align-items: center;
     justify-content: center;
-
-    padding: 18px;
+    padding: 15px;
 }
 
 .page.active {
     display: flex;
 }
 
-
-/* =========================================
-   MAIN CARD
-========================================= */
-
 .card {
     position: relative;
-
     width: 100%;
-    max-width: 920px;
+    max-width: 900px;
     min-height: 650px;
-
-    background: #ffffff;
-
-    border: 7px solid #ffffff;
+    background: white;
+    border: 6px solid white;
     outline: 4px solid #ed83ae;
-
     box-shadow:
-        9px 9px 0 #ce5b8c,
-        14px 14px 0 #f1a5c1;
-
+        8px 8px 0 #ce5b8c,
+        13px 13px 0 #f1a5c1;
     overflow: hidden;
 }
 
-
-/* Inner white/pink border */
-
 .card::before {
     content: "";
-
     position: absolute;
-
-    top: 14px;
-    left: 14px;
-    right: 14px;
-    bottom: 14px;
-
+    inset: 14px;
     border: 3px dashed #f2a8c3;
-
     pointer-events: none;
-
-    z-index: 2;
+    z-index: 1;
 }
-
-
-/* =========================================
-   CONTENT
-========================================= */
 
 .content {
     position: relative;
-    z-index: 50;
-
-    width: 100%;
+    z-index: 100;
     min-height: 650px;
-
-    padding: 75px 170px 85px;
-
+    padding: 70px 170px 90px;
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
-
     text-align: center;
 }
 
 .small-title {
     color: #d76193;
-
     font-size: 12px;
-    letter-spacing: 4px;
-
-    margin-bottom: 16px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
 }
 
 h1 {
     color: #e75d99;
-
-    font-size: clamp(42px, 8vw, 74px);
-
+    font-size: clamp(40px, 8vw, 70px);
     line-height: 1;
-
-    margin-bottom: 24px;
-
-    text-shadow:
-        4px 4px 0 #ffd2e1;
+    margin-bottom: 22px;
+    text-shadow: 4px 4px 0 #ffd2e1;
 }
 
 h2 {
     color: #e75d99;
-
-    font-size: clamp(28px, 6vw, 48px);
-
-    line-height: 1.05;
-
-    margin-bottom: 24px;
-
-    text-shadow:
-        3px 3px 0 #ffd2e1;
+    font-size: clamp(27px, 6vw, 46px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 #ffd2e1;
 }
 
 .message {
     max-width: 600px;
-
-    font-size: 14px;
-    line-height: 1.85;
-
-    margin-bottom: 25px;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 20px;
 }
 
 .message strong {
     color: #dc5c91;
 }
 
-
-/* =========================================
-   BUTTONS
-========================================= */
-
 button {
     position: relative;
-    z-index: 200;
+    z-index: 9999;
+
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 
     min-width: 135px;
-
-    padding: 13px 22px;
-
+    padding: 13px 20px;
     margin: 5px;
 
     background: #ec7faa;
-
     color: white;
 
     border: 4px solid white;
@@ -196,43 +131,24 @@ button {
     cursor: pointer;
 
     box-shadow: 5px 5px 0 #bf4d7e;
-
-    transition:
-        transform .12s ease,
-        box-shadow .12s ease;
-
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-}
-
-button:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 3px 3px 0 #bf4d7e;
 }
 
 button:active {
-    transform: translate(5px, 5px);
-    box-shadow: 0 0 0 #bf4d7e;
+    transform: translate(4px, 4px);
+    box-shadow: 1px 1px 0 #bf4d7e;
 }
-
-
-/* =========================================
-   EMOTION BUTTONS
-========================================= */
 
 .emotions {
     width: 100%;
-    max-width: 520px;
+    max-width: 500px;
 
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
-    gap: 18px;
+    gap: 15px;
 }
 
 .emotion {
-    min-height: 70px;
+    min-height: 65px;
 }
 
 
@@ -246,9 +162,9 @@ button:active {
     width: 130px;
     height: 205px;
 
-    bottom: 23px;
+    bottom: 20px;
 
-    z-index: 35;
+    z-index: 20;
 
     pointer-events: none;
 
@@ -256,17 +172,15 @@ button:active {
 }
 
 .character.left {
-    left: 18px;
+    left: 15px;
 }
 
 .character.right {
-    right: 18px;
+    right: 15px;
 }
 
 
-/* =========================================
-   HAIR BACK
-========================================= */
+/* Hair */
 
 .char-hair-back {
     position: absolute;
@@ -278,17 +192,12 @@ button:active {
     top: 13px;
 
     background: #e78fc0;
-
     border: 6px solid #573146;
 
     border-radius: 0;
 
-    box-shadow:
-        6px 6px 0 #bd6697;
+    box-shadow: 6px 6px 0 #bd6697;
 }
-
-
-/* Side hair */
 
 .char-hair-back::before,
 .char-hair-back::after {
@@ -302,7 +211,6 @@ button:active {
     top: 38px;
 
     background: #e78fc0;
-
     border: 5px solid #573146;
 }
 
@@ -315,9 +223,7 @@ button:active {
 }
 
 
-/* =========================================
-   FACE
-========================================= */
+/* Face */
 
 .char-face {
     position: absolute;
@@ -329,7 +235,6 @@ button:active {
     top: 39px;
 
     background: #ffd9c7;
-
     border: 5px solid #573146;
 
     border-radius: 0;
@@ -338,9 +243,7 @@ button:active {
 }
 
 
-/* =========================================
-   PIXEL BANGS
-========================================= */
+/* Bangs */
 
 .char-bangs {
     position: absolute;
@@ -352,10 +255,7 @@ button:active {
     top: 29px;
 
     background: #e78fc0;
-
     border: 5px solid #573146;
-
-    border-radius: 0;
 
     z-index: 10;
 }
@@ -378,9 +278,7 @@ button:active {
 }
 
 
-/* =========================================
-   HUGE PIXEL EYES
-========================================= */
+/* Eyes */
 
 .big-eye {
     position: absolute;
@@ -391,10 +289,7 @@ button:active {
     top: 29px;
 
     background: white;
-
     border: 4px solid #573146;
-
-    border-radius: 0;
 
     z-index: 20;
 }
@@ -406,9 +301,6 @@ button:active {
 .big-eye.right-eye {
     right: 8px;
 }
-
-
-/* Pupils */
 
 .big-eye::after {
     content: "";
@@ -422,12 +314,7 @@ button:active {
     top: 6px;
 
     background: #573146;
-
-    border-radius: 0;
 }
-
-
-/* Pixel eye shine */
 
 .big-eye::before {
     content: "";
@@ -446,9 +333,7 @@ button:active {
 }
 
 
-/* =========================================
-   BLUSH
-========================================= */
+/* Blush */
 
 .blush {
     position: absolute;
@@ -472,9 +357,7 @@ button:active {
 }
 
 
-/* =========================================
-   MOUTH
-========================================= */
+/* Mouth */
 
 .char-mouth {
     position: absolute;
@@ -491,9 +374,7 @@ button:active {
 }
 
 
-/* =========================================
-   PIXEL BOW
-========================================= */
+/* Bow */
 
 .bow {
     position: absolute;
@@ -517,7 +398,6 @@ button:active {
     height: 18px;
 
     background: #f27eae;
-
     border: 4px solid #573146;
 }
 
@@ -541,16 +421,13 @@ button:active {
     top: 9px;
 
     background: #ffd46e;
-
     border: 3px solid #573146;
 
     z-index: 5;
 }
 
 
-/* =========================================
-   BODY / DRESS
-========================================= */
+/* Body */
 
 .char-body {
     position: absolute;
@@ -562,16 +439,10 @@ button:active {
     bottom: 22px;
 
     background: #f47eae;
-
     border: 5px solid #573146;
-
-    border-radius: 0;
 
     z-index: 10;
 }
-
-
-/* Belt */
 
 .char-body::before {
     content: "";
@@ -587,16 +458,12 @@ button:active {
     background: #ffb9d1;
 }
 
-
-/* Dress heart */
-
 .char-body::after {
     content: "♥";
 
     position: absolute;
 
     color: white;
-
     font-size: 15px;
 
     left: 25px;
@@ -604,9 +471,7 @@ button:active {
 }
 
 
-/* =========================================
-   ARMS
-========================================= */
+/* Arms */
 
 .char-arm {
     position: absolute;
@@ -615,10 +480,7 @@ button:active {
     height: 40px;
 
     background: #ffd9c7;
-
     border: 4px solid #573146;
-
-    border-radius: 0;
 
     z-index: 5;
 }
@@ -626,21 +488,17 @@ button:active {
 .char-arm.left-arm {
     left: 10px;
     bottom: 23px;
-
     transform: rotate(24deg);
 }
 
 .char-arm.right-arm {
     right: 9px;
     bottom: 23px;
-
     transform: rotate(-24deg);
 }
 
 
-/* =========================================
-   SHOES
-========================================= */
+/* Shoes */
 
 .shoe {
     position: absolute;
@@ -649,8 +507,6 @@ button:active {
     height: 15px;
 
     background: #573146;
-
-    border-radius: 0;
 
     bottom: 7px;
 
@@ -666,105 +522,49 @@ button:active {
 }
 
 
-/* =========================================
-   FLOATING HEARTS
-========================================= */
-
-.float-heart {
-    position: absolute;
-
-    color: #e7659e;
-
-    font-size: 28px;
-
-    z-index: 60;
-
-    animation: pixelFloat 1.8s steps(3) infinite;
-}
-
-.float-heart.one {
-    left: -5px;
-    top: 25px;
-}
-
-.float-heart.two {
-    right: -8px;
-    top: 65px;
-
-    animation-delay: .5s;
-}
-
-@keyframes pixelFloat {
-
-    0%,
-    100% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-9px);
-    }
-}
-
-
-/* =========================================
-   DECORATIVE STARS
-========================================= */
+/* Decorations */
 
 .star {
     position: absolute;
 
     color: #ec7eaa;
-
     font-size: 22px;
 
     z-index: 5;
 
     pointer-events: none;
 
-    animation: sparkle 1.5s steps(2) infinite alternate;
+    animation: sparkle 1.4s steps(2) infinite alternate;
 }
 
 .s1 {
-    top: 30px;
+    top: 28px;
     left: 45px;
 }
 
 .s2 {
-    top: 55px;
-    right: 48px;
+    top: 50px;
+    right: 45px;
 }
 
 .s3 {
-    bottom: 50px;
-    left: 48px;
+    bottom: 45px;
+    left: 45px;
 }
 
 .s4 {
-    bottom: 65px;
-    right: 48px;
+    bottom: 60px;
+    right: 45px;
 }
 
 @keyframes sparkle {
-
     from {
         opacity: .35;
-        transform: scale(.8);
     }
 
     to {
         opacity: 1;
-        transform: scale(1.2);
     }
-}
-
-
-/* =========================================
-   FINAL PAGE
-========================================= */
-
-.final-page {
-    background: #fff0f6;
 }
 
 
@@ -775,7 +575,7 @@ button:active {
 @media (max-width: 650px) {
 
     .page {
-        padding: 12px;
+        padding: 10px;
     }
 
     .card {
@@ -786,65 +586,61 @@ button:active {
         min-height: 720px;
 
         padding:
-            82px 57px 105px;
+            75px 58px 110px;
     }
 
     .character {
-        transform: scale(.64);
+        transform: scale(.60);
         transform-origin: bottom center;
     }
 
     .character.left {
-        left: -12px;
+        left: -15px;
     }
 
     .character.right {
-        right: -12px;
+        right: -15px;
     }
 
     .small-title {
-        font-size: 9px;
+        font-size: 8px;
         letter-spacing: 2px;
     }
 
     h1 {
-        font-size: 42px;
+        font-size: 40px;
     }
 
     h2 {
-        font-size: 29px;
+        font-size: 28px;
     }
 
     .message {
-        font-size: 11px;
-        line-height: 1.8;
+        font-size: 10.5px;
+        line-height: 1.75;
     }
 
     .emotions {
         grid-template-columns: 1fr;
-        gap: 13px;
+        gap: 12px;
     }
 
     button {
-        font-size: 11px;
-        padding: 12px 18px;
+        min-width: 125px;
+        font-size: 10px;
+        padding: 12px 15px;
     }
 }
-
-
-/* =========================================
-   VERY SMALL PHONES
-========================================= */
 
 @media (max-width: 380px) {
 
     .content {
-        padding-left: 40px;
-        padding-right: 40px;
+        padding-left: 43px;
+        padding-right: 43px;
     }
 
     .character {
-        transform: scale(.54);
+        transform: scale(.52);
     }
 
     .message {
@@ -859,9 +655,9 @@ button:active {
 <body>
 
 
-<!-- =====================================================
-PAGE 1 — OPENING
-===================================================== -->
+<!-- ==================================================
+     PAGE 1
+================================================== -->
 
 <section class="page active" id="page1">
 
@@ -872,8 +668,6 @@ PAGE 1 — OPENING
 <span class="star s3">✦</span>
 <span class="star s4">✧</span>
 
-
-<!-- CHARACTER LEFT -->
 
 <div class="character left">
 
@@ -905,12 +699,8 @@ PAGE 1 — OPENING
     <div class="shoe left-shoe"></div>
     <div class="shoe right-shoe"></div>
 
-    <span class="float-heart one">♡</span>
-
 </div>
 
-
-<!-- CHARACTER RIGHT -->
 
 <div class="character right">
 
@@ -942,8 +732,6 @@ PAGE 1 — OPENING
     <div class="shoe left-shoe"></div>
     <div class="shoe right-shoe"></div>
 
-    <span class="float-heart two">♡</span>
-
 </div>
 
 
@@ -968,12 +756,12 @@ PAGE 1 — OPENING
 
         <br><br>
 
-        So take a little breath,
+        Take a little breath,
         relax, and enjoy this little surprise.
 
     </p>
 
-    <button type="button" onclick="showPage(2)">
+    <button type="button" data-page="2">
         OPEN THIS
     </button>
 
@@ -984,9 +772,9 @@ PAGE 1 — OPENING
 
 
 
-<!-- =====================================================
-PAGE 2 — CHOOSE EMOTION
-===================================================== -->
+<!-- ==================================================
+     PAGE 2
+================================================== -->
 
 <section class="page" id="page2">
 
@@ -1077,35 +865,22 @@ PAGE 2 — CHOOSE EMOTION
         what you're feeling right now.
     </p>
 
-
     <div class="emotions">
 
-        <button
-            type="button"
-            class="emotion"
-            onclick="showPage(3)">
-            You're Sad
+        <button type="button" class="emotion" data-page="3">
+            YOU'RE SAD
         </button>
 
-        <button
-            type="button"
-            class="emotion"
-            onclick="showPage(4)">
-            You Miss Me
+        <button type="button" class="emotion" data-page="4">
+            YOU MISS ME
         </button>
 
-        <button
-            type="button"
-            class="emotion"
-            onclick="showPage(5)">
-            You're Mad
+        <button type="button" class="emotion" data-page="5">
+            YOU'RE MAD
         </button>
 
-        <button
-            type="button"
-            class="emotion"
-            onclick="showPage(6)">
-            You Need Me
+        <button type="button" class="emotion" data-page="6">
+            YOU NEED ME
         </button>
 
     </div>
@@ -1117,9 +892,9 @@ PAGE 2 — CHOOSE EMOTION
 
 
 
-<!-- =====================================================
-PAGE 3 — SAD
-===================================================== -->
+<!-- ==================================================
+     PAGE 3
+================================================== -->
 
 <section class="page" id="page3">
 
@@ -1132,19 +907,14 @@ PAGE 3 — SAD
 
 
 <div class="character left">
-
     <div class="char-hair-back"></div>
 
     <div class="char-face">
-
         <div class="big-eye left-eye"></div>
         <div class="big-eye right-eye"></div>
-
         <div class="blush left-blush"></div>
         <div class="blush right-blush"></div>
-
         <div class="char-mouth"></div>
-
     </div>
 
     <div class="char-bangs"></div>
@@ -1154,30 +924,22 @@ PAGE 3 — SAD
     </div>
 
     <div class="char-body"></div>
-
     <div class="char-arm left-arm"></div>
     <div class="char-arm right-arm"></div>
-
     <div class="shoe left-shoe"></div>
     <div class="shoe right-shoe"></div>
-
 </div>
 
 
 <div class="character right">
-
     <div class="char-hair-back"></div>
 
     <div class="char-face">
-
         <div class="big-eye left-eye"></div>
         <div class="big-eye right-eye"></div>
-
         <div class="blush left-blush"></div>
         <div class="blush right-blush"></div>
-
         <div class="char-mouth"></div>
-
     </div>
 
     <div class="char-bangs"></div>
@@ -1187,13 +949,10 @@ PAGE 3 — SAD
     </div>
 
     <div class="char-body"></div>
-
     <div class="char-arm left-arm"></div>
     <div class="char-arm right-arm"></div>
-
     <div class="shoe left-shoe"></div>
     <div class="shoe right-shoe"></div>
-
 </div>
 
 
@@ -1242,7 +1001,7 @@ PAGE 3 — SAD
 
     </p>
 
-    <button type="button" onclick="showPage(2)">
+    <button type="button" data-page="2">
         BACK
     </button>
 
@@ -1253,9 +1012,9 @@ PAGE 3 — SAD
 
 
 
-<!-- =====================================================
-PAGE 4 — MISS ME
-===================================================== -->
+<!-- ==================================================
+     PAGE 4
+================================================== -->
 
 <section class="page" id="page4">
 
@@ -1268,19 +1027,14 @@ PAGE 4 — MISS ME
 
 
 <div class="character left">
-
     <div class="char-hair-back"></div>
 
     <div class="char-face">
-
         <div class="big-eye left-eye"></div>
         <div class="big-eye right-eye"></div>
-
         <div class="blush left-blush"></div>
         <div class="blush right-blush"></div>
-
         <div class="char-mouth"></div>
-
     </div>
 
     <div class="char-bangs"></div>
@@ -1290,24 +1044,188 @@ PAGE 4 — MISS ME
     </div>
 
     <div class="char-body"></div>
-
     <div class="char-arm left-arm"></div>
     <div class="char-arm right-arm"></div>
-
     <div class="shoe left-shoe"></div>
     <div class="shoe right-shoe"></div>
-
 </div>
 
 
 <div class="character right">
-
     <div class="char-hair-back"></div>
 
     <div class="char-face">
-
         <div class="big-eye left-eye"></div>
         <div class="big-eye right-eye"></div>
-
         <div class="blush left-blush"></div>
-        <div class="blush right-blush">
+        <div class="blush right-blush"></div>
+        <div class="char-mouth"></div>
+    </div>
+
+    <div class="char-bangs"></div>
+
+    <div class="bow">
+        <div class="bow-center"></div>
+    </div>
+
+    <div class="char-body"></div>
+    <div class="char-arm left-arm"></div>
+    <div class="char-arm right-arm"></div>
+    <div class="shoe left-shoe"></div>
+    <div class="shoe right-shoe"></div>
+</div>
+
+
+<div class="content">
+
+    <div class="small-title">
+        OPEN THIS WHENEVER...
+    </div>
+
+    <h2>You Miss Me</h2>
+
+    <p class="message">
+
+        Hey baby,
+
+        <br><br>
+
+        If you came here because you miss me,
+        I hope this message makes you feel
+        a little closer to me.
+
+        <br><br>
+
+        I miss you too.
+
+        <br><br>
+
+        Even when we're not together,
+        you're still someone I think about
+        throughout my day.
+
+        <br><br>
+
+        I wish I could be there with you,
+        but until then, remember that
+        you're never forgotten.
+
+        <br><br>
+
+        No matter the distance,
+        you still have a special place in my heart.
+
+        <br><br>
+
+        I miss you, baby.
+        More than you know.
+
+    </p>
+
+    <button type="button" data-page="2">
+        BACK
+    </button>
+
+</div>
+
+</div>
+</section>
+
+
+
+<!-- ==================================================
+     PAGE 5
+================================================== -->
+
+<section class="page" id="page5">
+
+<div class="card">
+
+<span class="star s1">✦</span>
+<span class="star s2">✧</span>
+<span class="star s3">✦</span>
+<span class="star s4">✧</span>
+
+
+<div class="character left">
+    <div class="char-hair-back"></div>
+
+    <div class="char-face">
+        <div class="big-eye left-eye"></div>
+        <div class="big-eye right-eye"></div>
+        <div class="blush left-blush"></div>
+        <div class="blush right-blush"></div>
+        <div class="char-mouth"></div>
+    </div>
+
+    <div class="char-bangs"></div>
+
+    <div class="bow">
+        <div class="bow-center"></div>
+    </div>
+
+    <div class="char-body"></div>
+    <div class="char-arm left-arm"></div>
+    <div class="char-arm right-arm"></div>
+    <div class="shoe left-shoe"></div>
+    <div class="shoe right-shoe"></div>
+</div>
+
+
+<div class="character right">
+    <div class="char-hair-back"></div>
+
+    <div class="char-face">
+        <div class="big-eye left-eye"></div>
+        <div class="big-eye right-eye"></div>
+        <div class="blush left-blush"></div>
+        <div class="blush right-blush"></div>
+        <div class="char-mouth"></div>
+    </div>
+
+    <div class="char-bangs"></div>
+
+    <div class="bow">
+        <div class="bow-center"></div>
+    </div>
+
+    <div class="char-body"></div>
+    <div class="char-arm left-arm"></div>
+    <div class="char-arm right-arm"></div>
+    <div class="shoe left-shoe"></div>
+    <div class="shoe right-shoe"></div>
+</div>
+
+
+<div class="content">
+
+    <div class="small-title">
+        OPEN THIS WHENEVER...
+    </div>
+
+    <h2>You're Mad</h2>
+
+    <p class="message">
+
+        Hey baby,
+
+        <br><br>
+
+        If you're angry right now,
+        take a moment to breathe
+        and give yourself the space you need.
+
+        <br><br>
+
+        If I did something that hurt you,
+        I'm truly sorry.
+
+        <br><br>
+
+        Your feelings matter to me,
+        and I never want you to feel
+        like they don't.
+
+        <br><br>
+
+        I don't want one bad m
