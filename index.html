@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You 💗</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Georgia, serif;
+      background: #fff5f7;
+      color: #5c3d45;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 430px;
+      padding: 30px;
+    }
+
+    .heart {
+      font-size: 55px;
+      animation: float 2s infinite ease-in-out;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 15px 0;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    button {
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      background: #d98b9b;
+      color: white;
+      font-size: 17px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div id="page1">
+      <div class="heart">💗</div>
+
+      <h1>Hey, You...</h1>
+
+      <p>
+        I made a little something for you.
+        <br>
+        Take a moment and open it. 🤍
+      </p>
+
+      <button onclick="nextPage(2)">
+        Open This 💌
+      </button>
+    </div>
+
+
+    <div id="page2" class="hidden">
+      <div class="heart">💌</div>
+
+      <h1>A Little Message</h1>
+
+      <p>
+        I may not always know the perfect words,
+        but I hope you know how much I appreciate
+        having you in my life.
+      </p>
+
+      <button onclick="nextPage(3)">
+        Continue 🤍
+      </button>
+    </div>
+
+
+    <div id="page3" class="hidden">
+      <div class="heart">✨</div>
+
+      <h1>Thank You</h1>
+
+      <p>
+        Thank you for the little moments,
+        the conversations, the laughs,
+        and everything that makes you special.
+      </p>
+
+      <button onclick="nextPage(4)">
+        One Last Thing 💗
+      </button>
+    </div>
+
+
+    <div id="page4" class="hidden">
+      <div class="heart">🌷</div>
+
+      <h1>For You</h1>
+
+      <p>
+        No matter how simple this website is,
+        I made it with a lot of thought.
+        <br><br>
+        I hope it makes you smile today. 🤍
+      </p>
+
+      <p><strong>— From someone who cares about you 💗</strong></p>
+    </div>
+
+  </div>
+
+
+  <script>
+    function nextPage(number) {
+      document.querySelectorAll(".page > div").forEach(function(page) {
+        page.classList.add("hidden");
+      });
+
+      document.getElementById("page" + number).classList.remove("hidden");
+    }
+  </script>
+
+</body>
+  </html>
