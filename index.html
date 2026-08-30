@@ -2,1230 +2,310 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Baby</title>
+
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
+
+<title>A Little Reminder ♡</title>
 
 <style>
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
     margin: 0;
     padding: 0;
-}
-
-html, body {
     width: 100%;
-    min-height: 100%;
-}
-
-body {
-    background: #ffd8e8;
-    color: #63364a;
-    font-family: "Courier New", monospace;
-    overflow-x: hidden;
-}
-
-.page {
-    display: none;
-    width: 100%;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-}
-
-.page.active {
-    display: flex;
-}
-
-.card {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    min-height: 650px;
-    background: white;
-    border: 6px solid white;
-    outline: 4px solid #ed83ae;
-    box-shadow:
-        8px 8px 0 #ce5b8c,
-        13px 13px 0 #f1a5c1;
+    height: 100%;
+    background: #07073e;
     overflow: hidden;
 }
 
-.card::before {
-    content: "";
-    position: absolute;
-    inset: 14px;
-    border: 3px dashed #f2a8c3;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.content {
-    position: relative;
-    z-index: 100;
-    min-height: 650px;
-    padding: 70px 170px 90px;
+body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
-.small-title {
-    color: #d76193;
-    font-size: 12px;
-    letter-spacing: 3px;
-    margin-bottom: 15px;
-}
-
-h1 {
-    color: #e75d99;
-    font-size: clamp(40px, 8vw, 70px);
-    line-height: 1;
-    margin-bottom: 22px;
-    text-shadow: 4px 4px 0 #ffd2e1;
-}
-
-h2 {
-    color: #e75d99;
-    font-size: clamp(27px, 6vw, 46px);
-    line-height: 1.1;
-    margin-bottom: 20px;
-    text-shadow: 3px 3px 0 #ffd2e1;
-}
-
-.message {
-    max-width: 600px;
-    font-size: 13px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-.message strong {
-    color: #dc5c91;
-}
-
-button {
+#app {
     position: relative;
+    width: 100vw;
+    height: 100vh;
+    max-width: 800px;
+    overflow: hidden;
+    background: #07073e;
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page {
+    position: absolute;
+    inset: 0;
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+.page img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* =========================
+   INVISIBLE CLICKABLE BUTTONS
+========================= */
+
+.hotspot {
+    position: absolute;
+    display: block;
+    z-index: 10;
+
+    background: transparent;
+    border: none;
+    outline: none;
+
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+#musicBtn {
+    position: fixed;
+
+    right: 16px;
+    bottom: 18px;
+
     z-index: 9999;
 
-    pointer-events: auto;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
+    width: 52px;
+    height: 52px;
 
-    min-width: 135px;
-    padding: 13px 20px;
-    margin: 5px;
+    border: 2px solid rgba(255,255,255,0.8);
+    border-radius: 50%;
 
-    background: #ec7faa;
+    background: rgba(20,10,70,0.75);
+
     color: white;
 
-    border: 4px solid white;
-    outline: 3px solid #cc588a;
+    font-size: 24px;
 
-    font-family: "Courier New", monospace;
-    font-size: 12px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+        0 3px 14px rgba(0,0,0,0.45);
 
     cursor: pointer;
 
-    box-shadow: 5px 5px 0 #bf4d7e;
+    -webkit-tap-highlight-color: transparent;
 }
 
-button:active {
-    transform: translate(4px, 4px);
-    box-shadow: 1px 1px 0 #bf4d7e;
+#musicBtn:active {
+    transform: scale(0.94);
 }
-
-.emotions {
-    width: 100%;
-    max-width: 500px;
-
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
-.emotion {
-    min-height: 65px;
-}
-
-
-/* =========================================
-   PIXEL CHARACTER
-========================================= */
-
-.character {
-    position: absolute;
-
-    width: 130px;
-    height: 205px;
-
-    bottom: 20px;
-
-    z-index: 20;
-
-    pointer-events: none;
-
-    image-rendering: pixelated;
-}
-
-.character.left {
-    left: 15px;
-}
-
-.character.right {
-    right: 15px;
-}
-
-
-/* Hair */
-
-.char-hair-back {
-    position: absolute;
-
-    width: 90px;
-    height: 88px;
-
-    left: 19px;
-    top: 13px;
-
-    background: #e78fc0;
-    border: 6px solid #573146;
-
-    border-radius: 0;
-
-    box-shadow: 6px 6px 0 #bd6697;
-}
-
-.char-hair-back::before,
-.char-hair-back::after {
-    content: "";
-
-    position: absolute;
-
-    width: 19px;
-    height: 55px;
-
-    top: 38px;
-
-    background: #e78fc0;
-    border: 5px solid #573146;
-}
-
-.char-hair-back::before {
-    left: -13px;
-}
-
-.char-hair-back::after {
-    right: -13px;
-}
-
-
-/* Face */
-
-.char-face {
-    position: absolute;
-
-    width: 80px;
-    height: 76px;
-
-    left: 24px;
-    top: 39px;
-
-    background: #ffd9c7;
-    border: 5px solid #573146;
-
-    border-radius: 0;
-
-    z-index: 5;
-}
-
-
-/* Bangs */
-
-.char-bangs {
-    position: absolute;
-
-    width: 82px;
-    height: 38px;
-
-    left: 23px;
-    top: 29px;
-
-    background: #e78fc0;
-    border: 5px solid #573146;
-
-    z-index: 10;
-}
-
-.char-bangs::after {
-    content: "";
-
-    position: absolute;
-
-    width: 22px;
-    height: 24px;
-
-    left: 25px;
-    bottom: -20px;
-
-    background: #e78fc0;
-
-    border-left: 5px solid #573146;
-    border-bottom: 5px solid #573146;
-}
-
-
-/* Eyes */
-
-.big-eye {
-    position: absolute;
-
-    width: 27px;
-    height: 32px;
-
-    top: 29px;
-
-    background: white;
-    border: 4px solid #573146;
-
-    z-index: 20;
-}
-
-.big-eye.left-eye {
-    left: 8px;
-}
-
-.big-eye.right-eye {
-    right: 8px;
-}
-
-.big-eye::after {
-    content: "";
-
-    position: absolute;
-
-    width: 14px;
-    height: 20px;
-
-    left: 4px;
-    top: 6px;
-
-    background: #573146;
-}
-
-.big-eye::before {
-    content: "";
-
-    position: absolute;
-
-    width: 6px;
-    height: 6px;
-
-    left: 6px;
-    top: 6px;
-
-    background: white;
-
-    z-index: 30;
-}
-
-
-/* Blush */
-
-.blush {
-    position: absolute;
-
-    width: 14px;
-    height: 6px;
-
-    top: 59px;
-
-    background: #f29db6;
-
-    z-index: 25;
-}
-
-.left-blush {
-    left: 5px;
-}
-
-.right-blush {
-    right: 5px;
-}
-
-
-/* Mouth */
-
-.char-mouth {
-    position: absolute;
-
-    width: 13px;
-    height: 6px;
-
-    left: 29px;
-    top: 62px;
-
-    border-bottom: 4px solid #573146;
-
-    z-index: 30;
-}
-
-
-/* Bow */
-
-.bow {
-    position: absolute;
-
-    width: 37px;
-    height: 30px;
-
-    top: 3px;
-    right: 3px;
-
-    z-index: 40;
-}
-
-.bow::before,
-.bow::after {
-    content: "";
-
-    position: absolute;
-
-    width: 18px;
-    height: 18px;
-
-    background: #f27eae;
-    border: 4px solid #573146;
-}
-
-.bow::before {
-    left: 0;
-    top: 5px;
-}
-
-.bow::after {
-    right: 0;
-    top: 5px;
-}
-
-.bow-center {
-    position: absolute;
-
-    width: 10px;
-    height: 10px;
-
-    left: 13px;
-    top: 9px;
-
-    background: #ffd46e;
-    border: 3px solid #573146;
-
-    z-index: 5;
-}
-
-
-/* Body */
-
-.char-body {
-    position: absolute;
-
-    width: 73px;
-    height: 61px;
-
-    left: 27px;
-    bottom: 22px;
-
-    background: #f47eae;
-    border: 5px solid #573146;
-
-    z-index: 10;
-}
-
-.char-body::before {
-    content: "";
-
-    position: absolute;
-
-    width: 63px;
-    height: 8px;
-
-    left: 0;
-    top: 17px;
-
-    background: #ffb9d1;
-}
-
-.char-body::after {
-    content: "♥";
-
-    position: absolute;
-
-    color: white;
-    font-size: 15px;
-
-    left: 25px;
-    top: 29px;
-}
-
-
-/* Arms */
-
-.char-arm {
-    position: absolute;
-
-    width: 18px;
-    height: 40px;
-
-    background: #ffd9c7;
-    border: 4px solid #573146;
-
-    z-index: 5;
-}
-
-.char-arm.left-arm {
-    left: 10px;
-    bottom: 23px;
-    transform: rotate(24deg);
-}
-
-.char-arm.right-arm {
-    right: 9px;
-    bottom: 23px;
-    transform: rotate(-24deg);
-}
-
-
-/* Shoes */
-
-.shoe {
-    position: absolute;
-
-    width: 28px;
-    height: 15px;
-
-    background: #573146;
-
-    bottom: 7px;
-
-    z-index: 25;
-}
-
-.shoe.left-shoe {
-    left: 28px;
-}
-
-.shoe.right-shoe {
-    right: 23px;
-}
-
-
-/* Decorations */
-
-.star {
-    position: absolute;
-
-    color: #ec7eaa;
-    font-size: 22px;
-
-    z-index: 5;
-
-    pointer-events: none;
-
-    animation: sparkle 1.4s steps(2) infinite alternate;
-}
-
-.s1 {
-    top: 28px;
-    left: 45px;
-}
-
-.s2 {
-    top: 50px;
-    right: 45px;
-}
-
-.s3 {
-    bottom: 45px;
-    left: 45px;
-}
-
-.s4 {
-    bottom: 60px;
-    right: 45px;
-}
-
-@keyframes sparkle {
-    from {
-        opacity: .35;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 650px) {
-
-    .page {
-        padding: 10px;
-    }
-
-    .card {
-        min-height: 720px;
-    }
-
-    .content {
-        min-height: 720px;
-
-        padding:
-            75px 58px 110px;
-    }
-
-    .character {
-        transform: scale(.60);
-        transform-origin: bottom center;
-    }
-
-    .character.left {
-        left: -15px;
-    }
-
-    .character.right {
-        right: -15px;
-    }
-
-    .small-title {
-        font-size: 8px;
-        letter-spacing: 2px;
-    }
-
-    h1 {
-        font-size: 40px;
-    }
-
-    h2 {
-        font-size: 28px;
-    }
-
-    .message {
-        font-size: 10.5px;
-        line-height: 1.75;
-    }
-
-    .emotions {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    button {
-        min-width: 125px;
-        font-size: 10px;
-        padding: 12px 15px;
-    }
-}
-
-@media (max-width: 380px) {
-
-    .content {
-        padding-left: 43px;
-        padding-right: 43px;
-    }
-
-    .character {
-        transform: scale(.52);
-    }
-
-    .message {
-        font-size: 10px;
-    }
-}
-
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ==================================================
-     PAGE 1
-================================================== -->
-
-<section class="page active" id="page1">
-
-<div class="card">
-
-<span class="star s1">✦</span>
-<span class="star s2">✧</span>
-<span class="star s3">✦</span>
-<span class="star s4">✧</span>
-
-
-<div class="character left">
-
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-
-        <div class="char-mouth"></div>
-
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-
-</div>
-
-
-<div class="character right">
-
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-
-        <div class="char-mouth"></div>
-
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-
-</div>
-
-
-<div class="content">
-
-    <div class="small-title">
-        A LITTLE SURPRISE FOR YOU
-    </div>
-
-    <h1>Hey Baby</h1>
-
-    <p class="message">
-
-        I made this little corner of the internet
-        just for you.
-
-        <br><br>
-
-        It's a tiny surprise you can open whenever
-        you need a little reminder that someone
-        is thinking about you.
-
-        <br><br>
-
-        Take a little breath,
-        relax, and enjoy this little surprise.
-
-    </p>
-
-    <button type="button" data-page="2">
-        OPEN THIS
-    </button>
-
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 2
-================================================== -->
-
-<section class="page" id="page2">
-
-<div class="card">
-
-<span class="star s1">✦</span>
-<span class="star s2">✧</span>
-<span class="star s3">✦</span>
-<span class="star s4">✧</span>
-
-
-<div class="character left">
-
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-
-        <div class="char-mouth"></div>
-
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-
-</div>
-
-
-<div class="character right">
-
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-
-        <div class="char-mouth"></div>
-
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-
-</div>
-
-
-<div class="content">
-
-    <div class="small-title">
-        OPEN THIS WHENEVER...
-    </div>
-
-    <h2>How are you feeling?</h2>
-
-    <p class="message">
-        Choose the little message that matches
-        what you're feeling right now.
-    </p>
-
-    <div class="emotions">
-
-        <button type="button" class="emotion" data-page="3">
-            YOU'RE SAD
-        </button>
-
-        <button type="button" class="emotion" data-page="4">
-            YOU MISS ME
-        </button>
-
-        <button type="button" class="emotion" data-page="5">
-            YOU'RE MAD
-        </button>
-
-        <button type="button" class="emotion" data-page="6">
-            YOU NEED ME
-        </button>
-
-    </div>
-
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 3
-================================================== -->
-
-<section class="page" id="page3">
-
-<div class="card">
-
-<span class="star s1">✦</span>
-<span class="star s2">✧</span>
-<span class="star s3">✦</span>
-<span class="star s4">✧</span>
-
-
-<div class="character left">
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-        <div class="char-mouth"></div>
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-</div>
-
-
-<div class="character right">
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-        <div class="char-mouth"></div>
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-</div>
-
-
-<div class="content">
-
-    <div class="small-title">
-        OPEN THIS WHENEVER...
-    </div>
-
-    <h2>You're Sad</h2>
-
-    <p class="message">
-
-        Hey baby,
-
-        <br><br>
-
-        If you're feeling sad right now,
-        I hope you remember that you don't
-        have to face everything alone.
-
-        <br><br>
-
-        It's okay to have bad days.
-        It's okay to feel tired or overwhelmed.
-
-        <br><br>
-
-        I may not always know exactly what
-        to say or do, but please know that
-        I care about you so much.
-
-        <br><br>
-
-        Take your time, breathe,
-        and be gentle with yourself today.
-
-        <br><br>
-
-        I hope this little message makes
-        your day a little lighter.
-
-        <br><br>
-
-        I'm always rooting for you, baby.
-
-    </p>
-
-    <button type="button" data-page="2">
-        BACK
-    </button>
-
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 4
-================================================== -->
-
-<section class="page" id="page4">
-
-<div class="card">
-
-<span class="star s1">✦</span>
-<span class="star s2">✧</span>
-<span class="star s3">✦</span>
-<span class="star s4">✧</span>
-
-
-<div class="character left">
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-        <div class="char-mouth"></div>
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-</div>
-
-
-<div class="character right">
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-        <div class="char-mouth"></div>
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-</div>
-
-
-<div class="content">
-
-    <div class="small-title">
-        OPEN THIS WHENEVER...
-    </div>
-
-    <h2>You Miss Me</h2>
-
-    <p class="message">
-
-        Hey baby,
-
-        <br><br>
-
-        If you came here because you miss me,
-        I hope this message makes you feel
-        a little closer to me.
-
-        <br><br>
-
-        I miss you too.
-
-        <br><br>
-
-        Even when we're not together,
-        you're still someone I think about
-        throughout my day.
-
-        <br><br>
-
-        I wish I could be there with you,
-        but until then, remember that
-        you're never forgotten.
-
-        <br><br>
-
-        No matter the distance,
-        you still have a special place in my heart.
-
-        <br><br>
-
-        I miss you, baby.
-        More than you know.
-
-    </p>
-
-    <button type="button" data-page="2">
-        BACK
-    </button>
-
-</div>
-
-</div>
-</section>
-
-
-
-<!-- ==================================================
-     PAGE 5
-================================================== -->
-
-<section class="page" id="page5">
-
-<div class="card">
-
-<span class="star s1">✦</span>
-<span class="star s2">✧</span>
-<span class="star s3">✦</span>
-<span class="star s4">✧</span>
-
-
-<div class="character left">
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-        <div class="char-mouth"></div>
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-</div>
-
-
-<div class="character right">
-    <div class="char-hair-back"></div>
-
-    <div class="char-face">
-        <div class="big-eye left-eye"></div>
-        <div class="big-eye right-eye"></div>
-        <div class="blush left-blush"></div>
-        <div class="blush right-blush"></div>
-        <div class="char-mouth"></div>
-    </div>
-
-    <div class="char-bangs"></div>
-
-    <div class="bow">
-        <div class="bow-center"></div>
-    </div>
-
-    <div class="char-body"></div>
-    <div class="char-arm left-arm"></div>
-    <div class="char-arm right-arm"></div>
-    <div class="shoe left-shoe"></div>
-    <div class="shoe right-shoe"></div>
-</div>
-
-
-<div class="content">
-
-    <div class="small-title">
-        OPEN THIS WHENEVER...
-    </div>
-
-    <h2>You're Mad</h2>
-
-    <p class="message">
-
-        Hey baby,
-
-        <br><br>
-
-        If you're angry right now,
-        take a moment to breathe
-        and give yourself the space you need.
-
-        <br><br>
-
-        If I did something that hurt you,
-        I'm truly sorry.
-
-        <br><br>
-
-        Your feelings matter to me,
-        and I never want you to feel
-        like they don't.
-
-        <br><br>
-
-        I don't want one bad m
+<div id="app">
+
+    <!-- ==================================================
+         PAGE 1
+    =================================================== -->
+
+    <section class="page active" id="p1">
+
+        <img
+            src="1000023352.png"
+            alt="A Little Reminder"
+        >
+
+        <!-- START HERE -->
+
+        <button
+            class="hotspot"
+            style="
+                left:15%;
+                top:73%;
+                width:70%;
+                height:8%;
+            "
+            aria-label="Start here"
+            onclick="go(2)"
+        ></button>
+
+    </section>
+
+
+    <!-- ==================================================
+         PAGE 2
+    =================================================== -->
+
+    <section class="page" id="p2">
+
+        <img
+            src="1000023353.png"
+            alt="Open"
+        >
+
+        <!-- OPEN -->
+
+        <button
+            class="hotspot"
+            style="
+                left:22%;
+                top:72%;
+                width:58%;
+                height:9%;
+            "
+            aria-label="Open"
+            onclick="go(3)"
+        ></button>
+
+    </section>
+
+
+    <!-- ==================================================
+         PAGE 3 - CHOICES
+    =================================================== -->
+
+    <section class="page" id="p3">
+
+        <img
+            src="1000023349.png"
+            alt="Open this when"
+        >
+
+
+        <!-- YOU'RE SAD -->
+
+        <button
+            class="hotspot"
+            style="
+                left:17%;
+                top:34%;
+                width:67%;
+                height:8%;
+            "
+            aria-label="You're sad"
+            onclick="go(4)"
+        ></button>
+
+
+        <!-- YOU'RE MAD -->
+
+        <button
+            class="hotspot"
+            style="
+                left:17%;
+                top:42%;
+                width:67%;
+                height:8%;
+            "
+            aria-label="You're mad"
+            onclick="go(5)"
+        ></button>
+
+
+        <!-- YOU MISS ME -->
+
+        <button
+            class="hotspot"
+            style="
+                left:17%;
+                top:50%;
+                width:67%;
+                height:8%;
+            "
+            aria-label="You miss me"
+            onclick="go(6)"
+        ></button>
+
+
+        <!-- YOU'RE JEALOUS -->
+
+        <button
+            class="hotspot"
+            style="
+                left:17%;
+                top:58%;
+                width:67%;
+                height:8%;
+            "
+            aria-label="You're jealous"
+            onclick="go(7)"
+        ></button>
+
+    </section>
+
+
+    <!-- ==================================================
+         PAGE 4 - SAD
+    =================================================== -->
+
+    <section class="page" id="p4">
+
+        <img
+            src="1000023348.png"
+            alt="When you're sad"
+        >
+
+        <!-- GO BACK -->
+
+        <button
+            class="hotspot"
+            style="
+                left:8%;
+                top:78%;
+                width:55%;
+                height:9%;
+            "
+            aria-label="Go back"
+            onclick="go(3)"
+        ></button>
+
+    </section>
+
+
+    <!-- ==================================================
+         PAGE 5 - MAD
+    =================================================== -->
+
+    <section class="page" id="p5">
+
+        <img
+            src="1000023355.png"
+            alt="When you're mad"
+        >
+
+        <!-- GO BACK -->
+
+        <button
+            class="hotspot"
+            style="
+                left:7%;
+                top:78%;
+                width:55%;
+                height:9%;
+            "
+            aria
